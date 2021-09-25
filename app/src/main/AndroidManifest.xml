@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.firesafetysci.FireSci">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FireSci">
+        <activity
+            android:name=".AccountCreatedActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".PhoneNumberActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".EmailAddressActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".CreatePasswordActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".CompanyDetailsActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".ChooseCountryActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".NewPasswordActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".EmailVerificationActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".InstallerOrCustomerActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".NameActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".SignInActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".RegisterOrSignInActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/ActivityThemeNoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

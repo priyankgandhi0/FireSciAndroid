@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/createAccountTextViewRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Create Account"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/logoImageViewRegister"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:foregroundGravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createAccountTextViewRegister"
+                app:srcCompat="@drawable/logo_transparent" />
+
+
+            <EditText
+                android:id="@+id/fireSciPinEditTextRegister"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="FireSci PIN"
+                android:paddingLeft="7dp"
+                android:paddingRight="2dp"
+                android:textColorHint="@color/hintColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoImageViewRegister"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/registerDescTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:text="Enter the FireSci pin. Email FireSci to obtain a PIN if you don't have one."
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fireSciPinEditTextRegister" />
+
+            <TextView
+                android:id="@+id/pinIsNotRecognizedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="92dp"
+                android:layout_marginRight="16dp"
+                android:text="Pin is not recognized."
+                android:textAllCaps="false"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fireSciPinEditTextRegister" />
+
+            <Button
+                android:id="@+id/continueButtonRegister"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registerDescTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

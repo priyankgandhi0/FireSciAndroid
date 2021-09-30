@@ -14,8 +14,14 @@ public class AccountCreatedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account_created);
     }
 
-    public void goToMain(View view) {
-        Intent intent = new Intent(AccountCreatedActivity.this, RegisterOrSignInActivity.class);
+    public void Verify_Successfully_Email (View view) {
+        Intent intent = new Intent(AccountCreatedActivity.this, EmailVerificationActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void backArrow9 (View view) {
+        Intent intent = new Intent(AccountCreatedActivity.this, EmailAddressActivity.class);
         startActivity(intent);
     }
 }

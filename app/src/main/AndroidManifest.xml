@@ -3,6 +3,7 @@
     package="com.firesafetysci.FireSci">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -11,44 +12,103 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FireSci">
         <activity
-            android:name=".AccountCreatedActivity"
+            android:name=".ChangePasswordActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".AccountActivity"/>
+        <activity
+            android:name=".AccountActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".WellcomeActivity"/>
+        <activity
+            android:name=".EditLocationSystemActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".MyFireSciSystemActivity"/>
+        <activity
+            android:name=".MyFireSciSystemLocationActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".WellcomeActivity"/>
+        <activity
+            android:name=".WellcomeActivity"
             android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".EditSystemActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".MyFireSciSystemActivity"/>
+        <activity
+            android:name=".AddNewSystemDeviceNameActivty"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName="AddNewSystemChoseDeviceActivity"/>
+        <activity
+            android:name=".AddNewSystemChoseDeviceActivity"
+            android:theme="@style/ActivityThemeNoActionBar" />
+        <activity
+            android:name=".AddNewSystemActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".MyFireSciSystemActivity"/>
+        <activity
+            android:name=".MyFireSciSystemActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".MyFireSciSystemLocationActivity"/>
+        <activity
+            android:name=".AddNewLocationActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".WellcomeActivity"/>
+        <activity
+            android:name=".TwoStepVerificationActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".EmailVerificationActivity"/>
+        <activity
+            android:name=".AccountCreatedActivity"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".EmailAddressActivity"/>
         <activity
             android:name=".PhoneNumberActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".CreatePasswordActivity"/>
         <activity
             android:name=".EmailAddressActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".PhoneNumberActivity"/>
         <activity
             android:name=".CreatePasswordActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".CompanyDetailsActivity"/>
         <activity
             android:name=".CompanyDetailsActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".ChooseCountryActivity"/>
         <activity
             android:name=".ChooseCountryActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".InstallerOrCustomerActivity"/>
         <activity
             android:name=".NewPasswordActivity"
             android:theme="@style/ActivityThemeNoActionBar" />
         <activity
             android:name=".EmailVerificationActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".AccountCreatedActivity"/>
         <activity
             android:name=".InstallerOrCustomerActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".NameActivity"/>
         <activity
             android:name=".NameActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".RegisterActivity"/>
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".RegisterOrSignInActivity"/>
         <activity
             android:name=".ForgotPasswordActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".SignInActivity"/>
         <activity
             android:name=".SignInActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:parentActivityName=".TwoStepVerificationActivity"
+            />
         <activity
             android:name=".RegisterOrSignInActivity"
             android:theme="@style/ActivityThemeNoActionBar" />
@@ -61,6 +121,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

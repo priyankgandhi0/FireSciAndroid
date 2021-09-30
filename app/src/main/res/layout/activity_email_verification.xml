@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmailVerificationActivity">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fire1"
+        android:alpha="0.1"/>
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -14,7 +18,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,8 +32,27 @@
                 android:text="Verifying your E-mail.."
                 android:textColor="@color/black"
                 android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="67dp"
+                android:layout_marginRight="67dp"
+                android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+                android:onClick="backArrow10"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/welcome_text5"
+                app:layout_constraintHorizontal_bias="0.421"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -43,6 +66,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/blue"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome_text5" />
@@ -74,6 +98,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/blue"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

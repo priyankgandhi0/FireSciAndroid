@@ -14,8 +14,12 @@ public class EmailVerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_email_verification);
     }
 
+    public void backArrow10 (View view) {
+        Intent intent = new Intent(EmailVerificationActivity.this, AccountCreatedActivity.class);
+        startActivity(intent);
+    }
     public void verify(View view) {
-        Intent intent = new Intent(EmailVerificationActivity.this, NewPasswordActivity.class);
+        Intent intent = new Intent(EmailVerificationActivity.this, TwoStepVerificationActivity.class);
         startActivity(intent);
     }
 }

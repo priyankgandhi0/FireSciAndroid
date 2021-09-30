@@ -14,6 +14,11 @@ public class NameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_name);
     }
 
+    public void backArrow2(View view) {
+        Intent intent=new Intent(NameActivity.this ,RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
     public void continue_btn(View view) {
         Intent intent = new Intent(NameActivity.this, InstallerOrCustomerActivity.class);
         startActivity(intent);

@@ -18,4 +18,9 @@ public class CreatePasswordActivity extends AppCompatActivity {
         Intent intent = new Intent(CreatePasswordActivity.this, PhoneNumberActivity.class);
         startActivity(intent);
     }
+    public void backArrow6(View view) {
+        Intent intent=new Intent(CreatePasswordActivity.this ,CompanyDetailsActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

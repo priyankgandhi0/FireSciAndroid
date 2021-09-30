@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NameActivity">
-
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fire1"
+    android:alpha="0.1"/>
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -18,17 +22,38 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/createAccountTextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="120dp"
                 android:text="Create Account"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="190dp"
+                android:layout_marginRight="190dp"
+                android:layout_marginBottom="16dp"
+                android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+                android:onClick="backArrow2"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/imageView8"
+                app:layout_constraintEnd_toStartOf="@+id/createAccountTextView1"
+                app:layout_constraintHorizontal_bias="0.114"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

@@ -18,6 +18,7 @@ public class CommonFunctions {
                 NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(network);
                 if (networkCapabilities == null) {
                     return false;
+
                 }
                 return networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) ||
                         networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR);

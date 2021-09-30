@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class ChooseCountryActivity extends AppCompatActivity {
@@ -16,6 +17,11 @@ public class ChooseCountryActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
+    }
+    public void backArrow4(View view) {
+        Intent intent=new Intent(ChooseCountryActivity.this ,InstallerOrCustomerActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void setOnClickListeners() {

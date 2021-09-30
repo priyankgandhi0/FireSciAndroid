@@ -18,4 +18,9 @@ public class EmailAddressActivity extends AppCompatActivity {
         Intent intent = new Intent(EmailAddressActivity.this, AccountCreatedActivity.class);
         startActivity(intent);
     }
+    public void backArrow8(View view) {
+        Intent intent=new Intent(EmailAddressActivity.this ,PhoneNumberActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

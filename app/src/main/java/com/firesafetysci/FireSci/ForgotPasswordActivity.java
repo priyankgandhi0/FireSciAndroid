@@ -14,6 +14,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
     }
 
+    public void backArrow13 (View view) {
+        Intent intent = new Intent(ForgotPasswordActivity.this, SignInActivity.class);
+        startActivity(intent);
+    }
     public void reset(View view) {
         Intent intent = new Intent(ForgotPasswordActivity.this, EmailVerificationActivity.class);
         startActivity(intent);

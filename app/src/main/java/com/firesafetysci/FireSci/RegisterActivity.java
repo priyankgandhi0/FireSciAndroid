@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity {
     private Button continueButton;
     private EditText fireSciPinEditText;
+  ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
+
     }
+    public void backArrow1(View view) {
+     Intent intent=new Intent(RegisterActivity.this ,RegisterOrSignInActivity.class);
+     startActivity(intent);
+     finish();
+    }
+
+
 
     private void setOnClickListeners() {
         continueButton.setOnClickListener(v -> {
@@ -44,13 +53,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void checkFireSciPinInDatabase(String fireSciPin) {
-
+        Intent intent = new Intent(RegisterActivity.this, NameActivity.class);
+        startActivity(intent);
     }
+
 
     private void initViews() {
         continueButton = findViewById(R.id.continueButtonRegister);
         fireSciPinEditText = findViewById(R.id.fireSciPinEditTextRegister);
-        getApplicationContext()
+        getApplicationContext();
     }
 
 }

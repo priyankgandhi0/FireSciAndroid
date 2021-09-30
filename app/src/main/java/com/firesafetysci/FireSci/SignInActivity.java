@@ -15,8 +15,15 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
     }
 
+    public void backArrow12 (View view) {
+        Intent intent = new Intent(SignInActivity.this, TwoStepVerificationActivity.class);
+        startActivity(intent);
+    }
     public void reset (View view) {
         Intent intent = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
+        startActivity(intent);
+    }  public void sign_in (View view) {
+        Intent intent = new Intent(SignInActivity.this, WellcomeActivity.class);
         startActivity(intent);
     }
 }

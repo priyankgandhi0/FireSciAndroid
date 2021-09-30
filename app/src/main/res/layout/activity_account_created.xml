@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".AccountCreatedActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.1"
+        android:background="@drawable/fire1" />
+
     <TextView
         android:id="@+id/verify_email"
         android:layout_width="wrap_content"
@@ -19,16 +25,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginRight="87dp"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+        android:onClick="backArrow9"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/verify_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/account_created"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="8dp"
         android:paddingLeft="8dp"
         android:text="Account created! Please check your e-mail to verify account"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/verify_email" />
@@ -50,12 +75,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_created" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="323dp"
+        android:layout_marginRight="323dp"
+        android:layout_marginBottom="477dp"
+        android:text="Email Sent!"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agree_terms4" />
+
     <Button
         android:id="@+id/continue_btn_verified"
         android:layout_width="200dp"
         android:layout_height="57dp"
         android:layout_marginTop="32dp"
-        android:onClick="goToMain"
+        android:onClick="Verify_Successfully_Email"
         android:text="Continue"
         android:textAllCaps="false"
         android:textSize="18sp"

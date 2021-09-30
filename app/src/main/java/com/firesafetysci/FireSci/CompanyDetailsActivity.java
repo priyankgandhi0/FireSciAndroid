@@ -18,4 +18,12 @@ public class CompanyDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(CompanyDetailsActivity.this, CreatePasswordActivity.class);
         startActivity(intent);
     }
+
+
+    public void backArrow5(View view) {
+        Intent intent=new Intent(CompanyDetailsActivity.this ,ChooseCountryActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

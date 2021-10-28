@@ -4,15 +4,15 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/home"
+            android:icon="@drawable/home_icon"
             android:title="Home Page" />
         <item
             android:id="@+id/nav_new_location"
-            android:icon="@drawable/location"
+            android:icon="@drawable/location_icon"
             android:title="Add a New Location" />
         <item
             android:id="@+id/nav_My_FireSci_System_Location"
-            android:icon="@drawable/fire"
+            android:icon="@drawable/fire_icon"
             android:title="My FireSci System Location" />
 
     </group>
@@ -21,11 +21,11 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_View_account"
-                    android:icon="@drawable/account"
+                    android:icon="@drawable/account_icon"
                     android:title="View Account" />
                 <item
                     android:id="@+id/nav_logout"
-                    android:icon="@drawable/logout"
+                    android:icon="@drawable/logout_icon"
                     android:title="Logout" />
             </group>
         </menu>
@@ -33,10 +33,10 @@
     <item android:title="Communication">
         <menu>
             <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/nav_help"
-                android:icon="@drawable/help"
-                android:title="Help" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/help_icon"
+                    android:title="Help" />
             </group>
         </menu>
 

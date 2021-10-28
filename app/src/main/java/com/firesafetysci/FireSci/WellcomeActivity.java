@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.Toast;
 
+import com.firesafetysci.FireSci.AccountRegistration.RegisterOrSignInActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class WellcomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -108,7 +108,7 @@ public class WellcomeActivity extends AppCompatActivity implements NavigationVie
                 .setTitle("LOG OUT")
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton(Html.fromHtml("<font color='#2D71C3'>YES</font>"), (dialog, which) -> {
-                    Intent i2 = new Intent(WellcomeActivity.this,RegisterOrSignInActivity.class);
+                    Intent i2 = new Intent(WellcomeActivity.this, RegisterOrSignInActivity.class);
                     startActivity(i2);
                 })
                 .setNegativeButton(Html.fromHtml("<font color='#BF0000'>NO</font>"), (dialog, which) -> dialog.dismiss())

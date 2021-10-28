@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.firesafetysci.FireSci.AccountRegistration.ForgotPasswordActivity;
+import com.firesafetysci.FireSci.AccountRegistration.AccountRegistrationTwoStepVerificationActivity;
+
 public class SignInActivity extends AppCompatActivity {
 
 
@@ -16,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void backArrow12 (View view) {
-        Intent intent = new Intent(SignInActivity.this, TwoStepVerificationActivity.class);
+        Intent intent = new Intent(SignInActivity.this, AccountRegistrationTwoStepVerificationActivity.class);
         startActivity(intent);
     }
     public void reset (View view) {

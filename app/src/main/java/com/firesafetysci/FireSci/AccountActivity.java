@@ -9,6 +9,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Toast;
 
+import com.firesafetysci.FireSci.AccountRegistration.RegisterOrSignInActivity;
+
 public class AccountActivity extends AppCompatActivity {
 
     @Override
@@ -40,7 +42,7 @@ public class AccountActivity extends AppCompatActivity {
                 .setTitle("LOG OUT")
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton(Html.fromHtml("<font color='#2D71C3'>YES</font>"), (dialog, which) -> {
-                    Intent i2 = new Intent(AccountActivity.this,RegisterOrSignInActivity.class);
+                    Intent i2 = new Intent(AccountActivity.this, RegisterOrSignInActivity.class);
                     startActivity(i2);
                 })
                 .setNegativeButton(Html.fromHtml("<font color='#BF0000'>NO</font>"), (dialog, which) -> dialog.dismiss())

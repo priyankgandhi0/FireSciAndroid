@@ -2,18 +2,17 @@
 <resources>
     <color name="colorPrimary">#000081</color>
     <color name="colorPrimaryDark">#C00000</color>
-    <color name="colorAccent">#FFFFFF</color>
-    <color name="borderColor">#000000</color>
+    <color name="colorAccent">#000081</color>
+
+    <color name="logo_red_color">#C00000</color>
     <color name="hintColor">#E9B8B3B3</color>
-
-
+    <color name="snackbarColor">#F44336</color>
     <color name="red">#FF0000</color>
     <color name="blue">#0181fa</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#03C00A</color>
     <color name="grey">#808080</color>
-    <color name="light_grey">#C6C6C6</color>
+    <color name="light_grey2">#FDDFDDDD</color>
 
-    <color name="divider_color">#8D8D8D</color>
 </resources>

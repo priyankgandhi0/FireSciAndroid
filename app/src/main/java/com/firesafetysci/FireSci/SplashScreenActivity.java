@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 
+import com.firesafetysci.FireSci.AccountRegistration.AccountRegistrationAccountCreatedActivity;
+import com.firesafetysci.FireSci.AccountRegistration.AccountRegistrationEmailVerificationActivity;
+import com.firesafetysci.FireSci.AccountRegistration.RegisterOrSignInActivity;
+
 public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

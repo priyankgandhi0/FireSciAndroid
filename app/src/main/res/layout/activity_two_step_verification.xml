@@ -1,82 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".AccountCreatedActivity">
+    tools:context=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-      android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
-        android:onClick="backArrow11"
-        android:textColor="@color/blue"
-        android:textStyle="bold" />
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/verify_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Two Step Verification"
-        android:layout_marginTop="15sp"
-        android:textColor="#000000"
-        android:textSize="22sp"
-        android:textStyle="bold"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/twoStepVerificationActivityToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Two Step Verification"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/twoStepVerImageView"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/two_step_ver_img" />
+
+            <TextView
+                android:id="@+id/accountCreatedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="For your security, let's set up Two-Step Verification by E-mail."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/twoStepVerImageView" />
+
+            <TextView
+                android:id="@+id/agreeTermsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Two-Step Verification will be used with the E-mail address originally provided. This is just to be used as backup, incase someone has signed in to an unknown device, user will receive an E-mail making sure it's them. If it's them, user will just click accept on the E-mail. If not them, user will have option to change password."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accountCreatedTextView" />
+
+            <Button
+                android:id="@+id/continueButtonTwoStepVer"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="sans-serif-black"
+                android:padding="10dp"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/agreeTermsTextView"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/skipTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Skip"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/continueButtonTwoStepVer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="312dp"
-        android:src="@drawable/two_step_ver_img"
-        android:padding="10dp"/>
-
-    <TextView
-        android:id="@+id/account_created"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:paddingLeft="8dp"
-        android:text="For your security, let's set up Two-Step Verification by E-mail."
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/agree_terms4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Two-Step Verification will be used with the E-mail address originally provided. This is just to be used as backup, incase someone has signed in to an unknown device, user will receive an E-mail making sure it's them. If it's them, user will just click accept on the E-mail. If not them, user will have option to change password."
-        android:textColor="#000000"
-        android:padding="10dp"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/continue_btn_verified"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-      android:padding="10dp"
-        android:onClick="goToSignIn"
-        android:text="Continue"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        app:cornerRadius="10sp"
-        tools:ignore="OnClick" />
-
-    <TextView
-        android:id="@+id/skip"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Skip"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:textSize="18sp"
-
-      />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

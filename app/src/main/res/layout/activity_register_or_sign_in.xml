@@ -4,22 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterOrSignInActivity">
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="100dp"
-        android:alpha="0.05"
-        android:background="@drawable/fire1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".AccountRegistration.RegisterOrSignInActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -34,7 +19,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/welcome_text1"
+                android:id="@+id/welcomeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -42,12 +27,13 @@
                 android:text="Welcome To"
                 android:textColor="#000000"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/logoImageView"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
@@ -58,70 +44,64 @@
                 android:layout_marginRight="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_text1"
+                app:layout_constraintTop_toBottomOf="@+id/welcomeTextView"
                 app:srcCompat="@drawable/logo_transparent" />
 
             <Button
-                android:id="@+id/registerBtn"
+                android:id="@+id/registerButton"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
                 android:layout_marginTop="160dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:onClick="register"
+                android:fontFamily="sans-serif-black"
                 android:text="Register"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:backgroundTint="@color/colorPrimaryDark"
+                app:backgroundTint="@color/logo_red_color"
                 app:cornerRadius="8sp"
-                app:layout_constraintBottom_toTopOf="@+id/signInBtn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
 
             <Button
-                android:id="@+id/signInBtn"
+                android:id="@+id/signInButton"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:onClick="clicked"
+                android:fontFamily="sans-serif-black"
                 android:text="Sign In"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
                 app:cornerRadius="8sp"
-                app:layout_constraintBottom_toTopOf="@+id/forgot_pass_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/registerBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
             <TextView
-                android:id="@+id/forgot_pass_text"
+                android:id="@+id/forgotPasswordTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:minHeight="48dp"
-                android:onClick="forgotPass"
                 android:text="Forgot Password?"
-                android:textColor="#000000"
-                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
+                app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

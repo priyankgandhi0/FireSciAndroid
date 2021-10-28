@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.firesafetysci.FireSci">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,121 +12,173 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FireSci">
+        android:theme="@style/Theme.FireSci"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
         <activity
             android:name=".ChangePasswordActivity"
+            android:parentActivityName=".AccountActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".AccountActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountActivity"
+            android:parentActivityName=".WellcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".WellcomeActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".EditLocationSystemActivity"
+            android:parentActivityName=".MyFireSciSystemActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".MyFireSciSystemActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MyFireSciSystemLocationActivity"
+            android:parentActivityName=".WellcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".WellcomeActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".WellcomeActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".EditSystemActivity"
+            android:parentActivityName=".MyFireSciSystemActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".MyFireSciSystemActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddNewSystemDeviceNameActivty"
+            android:parentActivityName="AddNewSystemChoseDeviceActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName="AddNewSystemChoseDeviceActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddNewSystemChoseDeviceActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddNewSystemActivity"
+            android:parentActivityName=".MyFireSciSystemActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".MyFireSciSystemActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".MyFireSciSystemActivity"
+            android:parentActivityName=".MyFireSciSystemLocationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".MyFireSciSystemLocationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddNewLocationActivity"
+            android:parentActivityName=".WellcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".WellcomeActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".TwoStepVerificationActivity"
+            android:name=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationEmailVerificationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".EmailVerificationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".AccountCreatedActivity"
+            android:name=".AccountRegistration.AccountRegistrationAccountCreatedActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationEmailAddressActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".EmailAddressActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".PhoneNumberActivity"
+            android:name=".AccountRegistration.AccountRegistrationPhoneNumberActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".CreatePasswordActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".EmailAddressActivity"
+            android:name=".AccountRegistration.AccountRegistrationEmailAddressActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationPhoneNumberActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".PhoneNumberActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".CreatePasswordActivity"
+            android:name=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".CompanyDetailsActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".CompanyDetailsActivity"
+            android:name=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationChooseCountryActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".ChooseCountryActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ChooseCountryActivity"
+            android:name=".AccountRegistration.AccountRegistrationChooseCountryActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationInstallerOrCustomerActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".InstallerOrCustomerActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".NewPasswordActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
-        <activity
-            android:name=".EmailVerificationActivity"
+            android:name=".AccountRegistration.NewPasswordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".AccountCreatedActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".InstallerOrCustomerActivity"
+            android:name=".AccountRegistration.AccountRegistrationEmailVerificationActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationAccountCreatedActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".NameActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".NameActivity"
+            android:name=".AccountRegistration.AccountRegistrationInstallerOrCustomerActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationNameActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".RegisterActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".AccountRegistration.AccountRegistrationNameActivity"
+            android:parentActivityName=".AccountRegistration.RegisterActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".RegisterOrSignInActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".AccountRegistration.RegisterActivity"
+            android:parentActivityName=".AccountRegistration.RegisterOrSignInActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".SignInActivity"/>
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".AccountRegistration.ForgotPasswordActivity"
+            android:parentActivityName=".SignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SignInActivity"
+            android:parentActivityName=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            android:parentActivityName=".TwoStepVerificationActivity"
-            />
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".RegisterOrSignInActivity"
-            android:theme="@style/ActivityThemeNoActionBar" />
+            android:name=".AccountRegistration.RegisterOrSignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/ActivityThemeNoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

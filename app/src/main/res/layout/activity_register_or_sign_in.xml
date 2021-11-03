@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/welcomeTextView"
@@ -61,7 +61,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:backgroundTint="@color/logo_red_color"
-                app:cornerRadius="8sp"
+                app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
@@ -79,7 +79,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8sp"
+                app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

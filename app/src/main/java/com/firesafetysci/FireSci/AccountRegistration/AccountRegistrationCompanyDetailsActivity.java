@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +14,10 @@ import android.widget.LinearLayout;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.firesafetysci.FireSci.CommonFunctions;
+import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.RequestHandler;
-import com.firesafetysci.FireSci.SharedPrefManager;
-import com.firesafetysci.FireSci.SignInActivity;
+import com.firesafetysci.FireSci.Main.RequestHandler;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -42,9 +40,9 @@ public class AccountRegistrationCompanyDetailsActivity extends AppCompatActivity
         initViews();
         setOnClickListeners();
 
-        Toolbar accountDetailsActivityToolbar = findViewById(R.id.accountDetailsActivityToolbar);
-        accountDetailsActivityToolbar.setTitle("");
-        setSupportActionBar(accountDetailsActivityToolbar);
+        Toolbar companyDetailsActivityToolbar = findViewById(R.id.companyDetailsActivityToolbar);
+        companyDetailsActivityToolbar.setTitle("");
+        setSupportActionBar(companyDetailsActivityToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -62,7 +60,7 @@ public class AccountRegistrationCompanyDetailsActivity extends AppCompatActivity
         addressEditText = findViewById(R.id.addressEditText);
         zipCodeEditText = findViewById(R.id.zipCodeEditText);
         continueButton = findViewById(R.id.continueButtonCompanyDetails);
-        progressBar = findViewById(R.id.progressBarAccountDetails);
+        progressBar = findViewById(R.id.progressBarCompanyDetails);
     }
 
     private void setOnClickListeners() {
@@ -98,8 +96,7 @@ public class AccountRegistrationCompanyDetailsActivity extends AppCompatActivity
     private void setCompanyDetailsInDatabase(String companyName, String city, String state, String address, String zipCode) {
         String fireSciPin = SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin();
         String URL = "http://firesafetysci.com/android_app/api/set_company_details.php?firesci_pin=" + fireSciPin + "&company_name=" + companyName +
-                "&city=" + city + "&stateProvince=" +
-                "" + state + "&address=" + address + "&zipcode=" + zipCode;
+                "&city=" + city + "&stateProvince=" + state + "&address=" + address + "&zipcode=" + zipCode;
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET, URL,
@@ -125,8 +122,6 @@ public class AccountRegistrationCompanyDetailsActivity extends AppCompatActivity
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);

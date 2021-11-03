@@ -3,7 +3,6 @@ package com.firesafetysci.FireSci.AccountRegistration;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,8 +15,8 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.RequestHandler;
-import com.firesafetysci.FireSci.SharedPrefManager;
+import com.firesafetysci.FireSci.Main.RequestHandler;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -69,8 +68,16 @@ public class AccountRegistrationAccountCreatedActivity extends AppCompatActivity
     private void setOnClickListeners() {
         continueButtonAccountCreated.setOnClickListener(v -> {
             Intent intent = new Intent(AccountRegistrationAccountCreatedActivity.this, AccountRegistrationEmailVerificationActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1) {
+            finish();
+        }
     }
 
     private void sendVerificationCodeEmail(String fireSciPin, String email, String firstName) {

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.SignInActivity;
+import com.firesafetysci.FireSci.Main.SignInActivity;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 

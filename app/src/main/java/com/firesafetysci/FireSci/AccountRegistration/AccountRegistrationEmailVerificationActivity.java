@@ -15,8 +15,8 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.RequestHandler;
-import com.firesafetysci.FireSci.SharedPrefManager;
+import com.firesafetysci.FireSci.Main.RequestHandler;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -86,9 +86,20 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
         });
 
         didntGetEmailTextView.setOnClickListener(v -> {
-//            Intent intent = new Intent(AccountRegistrationEmailVerificationActivity.this, DidntGetEmailAActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(AccountRegistrationEmailVerificationActivity.this, AccountRegistrationDidntGetEmailActivity.class);
+            startActivityForResult(intent, 2);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 2) {
+            setResult(0);
+        } else if (resultCode == 3) {
+            setResult(1);
+        }
+        finish();
     }
 
     private void checkEmailVerification(String fireSciPin) {

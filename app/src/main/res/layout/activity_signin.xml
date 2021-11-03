@@ -4,22 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInActivity">
-    <ImageView
+    tools:context=".Main.SignInActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="100dp"
-        android:alpha="0.05"
-        android:background="@drawable/fire_back"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/signInActivityToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Sign In"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="0dp"
@@ -27,55 +44,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/resetPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:onClick="reset"
-                android:text="Forgot Password?"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signIn_btn" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="350dp"
-                android:layout_marginRight="350dp"
-                android:drawableLeft="@drawable/back_arrow_icon"
-                android:onClick="backArrow12"
-                android:textColor="@color/blue"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="290dp"
-                android:layout_height="150dp"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
                 android:foregroundGravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -97,22 +79,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="FireSci Pin or E-mail"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/emailEditTextSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/edit_text_border"
                     android:hint="FireSci Access Code or E-mail"
-                    android:paddingStart="7dp"
-                    android:paddingLeft="5dp"
-                    android:textColorHint="@color/hintColor" />
+                    android:imeActionLabel="Next"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/hintColor"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -132,69 +119,104 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/passwordTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/password"
                     tools:layout_editor_absoluteY="347dp" />
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/passwordEditTextSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/edit_text_border"
                     android:hint="Enter Password"
-                    android:paddingStart="7dp"
-                    android:paddingLeft="5dp"
+                    android:imeActionLabel="Done"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:singleLine="true"
                     android:textColorHint="@color/hintColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
+                    tools:ignore="TouchTargetSizeCheck"
                     tools:layout_editor_absoluteY="371dp" />
 
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/checkbox1"
-                android:layout_width="206dp"
+                android:id="@+id/keepMeSignedInCheckBox"
+                android:layout_width="0dp"
                 android:layout_height="41dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="29dp"
-                android:buttonTint="@color/black"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="true"
                 android:text="keep Me Signed In"
-                android:textColor="#04040A"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/signIn_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.078"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
 
             <Button
-                android:onClick="sign_in"
-                android:id="@+id/signIn_btn"
-                android:layout_width="240dp"
-                android:layout_height="57dp"
+                android:id="@+id/signInButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="sans-serif-black"
                 android:text="Sign In"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8sp"
-                app:layout_constraintBottom_toTopOf="@+id/resetPassword"
+                app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkbox1" />
+                app:layout_constraintTop_toBottomOf="@+id/keepMeSignedInCheckBox" />
+
+            <TextView
+                android:id="@+id/forgotPasswordTextViewSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Forgot Password?"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/progressBarSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/progress_bar_back"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,10 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.firesafetysci.FireSci.CommonFunctions;
+import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.RequestHandler;
-import com.firesafetysci.FireSci.SharedPrefManager;
+import com.firesafetysci.FireSci.Main.RequestHandler;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;

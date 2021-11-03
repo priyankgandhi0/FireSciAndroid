@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.SignInActivity;
+import com.firesafetysci.FireSci.Main.SignInActivity;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.Installer.HomePageInstallerActivity;
 
 public class RegisterOrSignInActivity extends AppCompatActivity {
     private Button registerButton, signInButton;
@@ -21,6 +23,23 @@ public class RegisterOrSignInActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
+
+        //Check if user is already signed in
+        boolean isSignedIn = SharedPrefManager.getInstance(getApplicationContext()).getKeepMeSignedIn();
+
+        if (isSignedIn) {
+            int installerOrCustomer = SharedPrefManager.getInstance(getApplicationContext()).getInstallerOrCustomer();
+
+            if (installerOrCustomer == 1) {
+                Intent intent = new Intent(RegisterOrSignInActivity.this, HomePageInstallerActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Intent intent = new Intent(RegisterOrSignInActivity.this, HomePageInstallerActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 
     private void initViews() {
@@ -38,6 +57,7 @@ public class RegisterOrSignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterOrSignInActivity.this, SignInActivity.class);
             startActivity(intent);
+
         });
 
         forgotPasswordTextView.setOnClickListener(v -> {

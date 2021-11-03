@@ -4,15 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import com.firesafetysci.FireSci.CommonFunctions;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.SignInActivity;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -53,6 +48,7 @@ public class AccountRegistrationTwoStepVerificationActivity extends AppCompatAct
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
             finish();
         });
     }

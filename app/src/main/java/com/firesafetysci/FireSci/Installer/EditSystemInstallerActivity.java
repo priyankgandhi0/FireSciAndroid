@@ -41,7 +41,7 @@ import java.util.Objects;
 public class EditSystemInstallerActivity extends AppCompatActivity implements DeviceTypeAdapter.OnDeviceTypeClickListener {
     public static System systemToEdit;
 
-    private EditText deviceNameEditText;
+    private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private RecyclerView deviceTypeRecyclerView;
     private Button saveChangesButton;
 
@@ -69,7 +69,6 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
         deviceTypeArrayList = new ArrayList<>();
         deviceTypeArrayList.add("dar");
         deviceTypeArrayList.add("indi");
-        deviceTypeArrayList.add("wind");
         populateRecyclerView(deviceTypeArrayList, systemToEdit.getSystemType());
     }
 
@@ -80,7 +79,12 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
     }
 
     private void initViews() {
-        deviceNameEditText = findViewById(R.id.deviceNameEditTextEditSystemInstaller);
+        deviceNameEditText = findViewById(R.id.deviceNameEditTextEdit);
+        roomEditText = findViewById(R.id.roomEditTextEdit);
+        buildingEditText = findViewById(R.id.buildingEditTextEdit);
+        floorEditText = findViewById(R.id.floorEditTextEdit);
+        descriptionEditText = findViewById(R.id.descriptionEditTextEdit);
+
         deviceTypeRecyclerView = findViewById(R.id.recyclerViewEditSystemInstaller);
         saveChangesButton = findViewById(R.id.saveChangesButtonEditSystemInstaller);
         progressBar = findViewById(R.id.progressBarEditSystemInstaller);
@@ -90,8 +94,12 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
     }
 
     private void setDefaultValues() {
-        selectedDeviceType = systemToEdit.getDeviceName();
-        deviceNameEditText.setText(selectedDeviceType);
+        selectedDeviceType = systemToEdit.getSystemType();
+        deviceNameEditText.setText(systemToEdit.getDeviceName());
+        roomEditText.setText(systemToEdit.getRoom());
+        buildingEditText.setText(systemToEdit.getBuilding());
+        floorEditText.setText(systemToEdit.getFloor());
+        descriptionEditText.setText(systemToEdit.getDescription());
     }
 
     private void populateRecyclerView(List<String> deviceTypeArrayList, String selectedDeviceType) {
@@ -108,9 +116,13 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
     private void setOnClickListeners() {
         saveChangesButton.setOnClickListener(v -> {
             String deviceName = deviceNameEditText.getText().toString().trim();
+            String room = roomEditText.getText().toString().trim();
+            String building = buildingEditText.getText().toString().trim();
+            String floor = floorEditText.getText().toString().trim();
+            String description = descriptionEditText.getText().toString().trim();
 
-            if (deviceName.isEmpty()) {
-                Snackbar.make(findViewById(R.id.saveChangesButtonEditSystemInstaller), "Please enter the Device Name and try again!", 1250)
+            if (deviceName.isEmpty() || description.isEmpty()) {
+                Snackbar.make(findViewById(R.id.saveChangesButtonEditSystemInstaller), "Please enter the required fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -126,17 +138,21 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 deviceNameEditText.clearFocus();
-                editSystemInDatabase(systemToEdit.getSystemSerialNumber(), selectedDeviceType, deviceName);
+                editSystemInDatabase(systemToEdit.getSystemSerialNumber(), selectedDeviceType, deviceName, room, building, floor, description);
             }
         });
     }
 
-    private void editSystemInDatabase(String systemSerialNumber, String selectedDeviceType, String deviceName) {
+    private void editSystemInDatabase(String systemSerialNumber, String selectedDeviceType, String deviceName, String room, String building, String floor, String description) {
         String URL = Uri.parse("http://firesafetysci.com/android_app/api/edit_system.php")
                 .buildUpon()
                 .appendQueryParameter("system_serial_number", systemSerialNumber)
                 .appendQueryParameter("system_type", selectedDeviceType)
                 .appendQueryParameter("device_name", deviceName)
+                .appendQueryParameter("room", room)
+                .appendQueryParameter("building", building)
+                .appendQueryParameter("floor", floor)
+                .appendQueryParameter("desc", description)
                 .build().toString();
 
         StringRequest stringRequest = new StringRequest(
@@ -204,7 +220,6 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
 
         deviceTypeArrayList.add("dar");
         deviceTypeArrayList.add("indi");
-        deviceTypeArrayList.add("wind");
         populateRecyclerView(deviceTypeArrayList, newSelectedDeviceType);
     }
 }

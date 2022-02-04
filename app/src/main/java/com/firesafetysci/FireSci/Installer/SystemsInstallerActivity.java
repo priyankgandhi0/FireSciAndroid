@@ -28,6 +28,7 @@ import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.Main.Location;
 import com.firesafetysci.FireSci.Main.System;
 import com.firesafetysci.FireSci.Main.SystemAdapter;
+import com.firesafetysci.FireSci.Main.SystemDetailsActivity;
 import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.google.android.material.snackbar.Snackbar;
@@ -46,20 +47,19 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SystemsInstallerActivity extends AppCompatActivity
-        implements SystemAdapter.OnEditButtonPressedListener, SystemAdapter.OnDeleteButtonPressedListener {
+        implements SystemAdapter.OnEditButtonPressedListener, SystemAdapter.OnDeleteButtonPressedListener, SystemAdapter.OnSystemClickListener {
     private RecyclerView systemsRecyclerViewInstaller;
-    private ImageButton addSystemImageButton, editLocationImageButton;
+    private ImageButton addSystemImageButton, editLocationImageButton, deleteLocationImageButton;
     private ImageView noSystemsFoundImageView;
     private LinearLayout progressBar;
     private ArrayList<System> systemsArrayList;
-    private TextView companyNameTextView, dateTextView;
+    private TextView companyNameTextView, dateTextView, locationDescriptionTextView, addressTextView;
 
     private int locationId;
     String companyNameGlobal, cityGlobal, stateGlobal, addressGlobal, zipcodeGlobal, locationDescriptionGlobal,
             customerFiresciPinGlobal, selectedCountrySelectedCountryLabelEdit;
 
     public static Location location;
-
     private SystemAdapter adapter;
 
     @Override
@@ -106,11 +106,14 @@ public class SystemsInstallerActivity extends AppCompatActivity
         systemsRecyclerViewInstaller = findViewById(R.id.systemsRecyclerViewInstaller);
         addSystemImageButton = findViewById(R.id.addSystemImageButtonInstaller);
         editLocationImageButton = findViewById(R.id.editLocationImageButtonInstaller);
+        deleteLocationImageButton = findViewById(R.id.deleteLocationButtonInstaller);
         noSystemsFoundImageView = findViewById(R.id.noSystemsFoundImageView);
         progressBar = findViewById(R.id.progressBarSystemsInstaller);
         companyNameTextView = findViewById(R.id.companyTextViewSystemsInstaller);
         dateTextView = findViewById(R.id.dateTextViewInstaller);
         systemsArrayList = new ArrayList<>();
+        locationDescriptionTextView = findViewById(R.id.locationDescriptionTextViewInstaller);
+        addressTextView = findViewById(R.id.addressTextViewInstaller);
     }
 
     private void setOnClickListeners() {
@@ -124,6 +127,17 @@ public class SystemsInstallerActivity extends AppCompatActivity
             Intent intent = new Intent(SystemsInstallerActivity.this, EditLocationInstallerActivity.class);
             startActivity(intent);
             EditLocationInstallerActivity.locationToEdit = location;
+        });
+
+        deleteLocationImageButton.setOnClickListener(v -> {
+            new AlertDialog.Builder(SystemsInstallerActivity.this)
+                    .setTitle("Delete Location")
+                    .setMessage("Are you sure you want to delete this location?")
+                    .setPositiveButton("DELETE", (dialog, which) -> {
+                        deleteLocationFromDatabase();
+                    })
+                    .setNegativeButton("CANCEL", null)
+                    .show();
         });
     }
 
@@ -147,6 +161,10 @@ public class SystemsInstallerActivity extends AppCompatActivity
             customerFiresciPinGlobal = location.getCustomerFiresciPin();
             selectedCountrySelectedCountryLabelEdit = location.getCountry();
         }
+
+        locationDescriptionTextView.setText(locationDescriptionGlobal);
+        String fullAddress = String.format("%s, %s (%s)", addressGlobal, cityGlobal, zipcodeGlobal);
+        addressTextView.setText(fullAddress);
     }
 
     private void getSystemsFromDatabase() {
@@ -179,6 +197,10 @@ public class SystemsInstallerActivity extends AppCompatActivity
                                 system.setSystemSerialNumber(jsonObject.getString("system_serial_number"));
                                 system.setSystemType(jsonObject.getString("system_type"));
                                 system.setDeviceName(jsonObject.getString("device_name"));
+                                system.setRoom(jsonObject.getString("room"));
+                                system.setBuilding(jsonObject.getString("building"));
+                                system.setFloor(jsonObject.getString("floor"));
+                                system.setDescription(jsonObject.getString("description"));
                                 system.setLocationId(Integer.parseInt(jsonObject.getString("location_id")));
 
                                 systemsArrayList.add(system);
@@ -209,15 +231,64 @@ public class SystemsInstallerActivity extends AppCompatActivity
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    private void deleteLocationFromDatabase() {
+        progressBar.setVisibility(View.VISIBLE);
+
+        String URL = "http://firesafetysci.com/android_app/api/delete_location_by_id.php?id=" + locationId;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, URL,
+                result -> {
+                    Log.i("Result", result);
+                    progressBar.setVisibility(View.GONE);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        String response = jsonObject.getString("response");
+
+                        if (response.equals("successful")) {
+                            finish();
+                        }
+
+                    } catch (Exception e) {
+                        Snackbar.make(findViewById(R.id.addSystemImageButtonInstaller), "Failed! Please try again!!!", 1250)
+                                .setAction("Action", null)
+                                .setActionTextColor(Color.WHITE)
+                                .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                                .show();
+
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    Snackbar.make(findViewById(R.id.addSystemImageButtonInstaller), "Failed! Please try again!!!", 1250)
+                            .setAction("Action", null)
+                            .setActionTextColor(Color.WHITE)
+                            .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                            .show();
+
+                    error.printStackTrace();
+                }
+        ) {
+            @Override
+            public Map<String, String> getParams() {
+                return new HashMap<>();
+            }
+
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
     private void clearRecyclerView() {
         systemsArrayList.clear();
-        systemsRecyclerViewInstaller.setAdapter(new SystemAdapter(systemsArrayList, this, null, null));
+        systemsRecyclerViewInstaller.setAdapter(new SystemAdapter(systemsArrayList, this, null, null, null));
     }
 
     private void populateRecyclerView(List<System> systemList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         systemsRecyclerViewInstaller.setLayoutManager(layoutManager);
-        adapter = new SystemAdapter(systemList, this, this, this);
+        adapter = new SystemAdapter(systemList, this, this, this, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         systemsRecyclerViewInstaller.setLayoutManager(linearLayoutManager);
         systemsRecyclerViewInstaller.setItemAnimator(new DefaultItemAnimator());
@@ -266,5 +337,12 @@ public class SystemsInstallerActivity extends AppCompatActivity
                 })
                 .setNegativeButton("CANCEL", null)
                 .show();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(SystemsInstallerActivity.this, SystemDetailsActivity.class);
+        startActivity(intent);
+        SystemDetailsActivity.system = systemsArrayList.get(position);
     }
 }

@@ -3,8 +3,11 @@ package com.firesafetysci.FireSci.AccountRegistration;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,6 +36,7 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
     private EditText passwordEditText, confirmPasswordEditText;
     private LinearLayout progressBar;
     private TextView passwordsDoNotMatchTextView, mustContainUpperLowerTextView;
+    private CheckBox showPasswordCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,7 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
         progressBar = findViewById(R.id.progressBarCreatePassword);
         passwordsDoNotMatchTextView = findViewById(R.id.passwordsDoNotMatchTextView);
         mustContainUpperLowerTextView = findViewById(R.id.mustContainUpperLowerTextView);
+        showPasswordCheckBox = findViewById(R.id.showPasswordCheckBoxReg);
     }
 
     private void setOnClickListeners() {
@@ -105,10 +110,35 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
                 setPasswordInDatabase(password);
             }
         });
+
+        //Set Show Password Change Listener
+        showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                showPassword();
+            } else {
+                hidePassword();
+            }
+        });
+    }
+
+    void showPassword() {
+        passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        confirmPasswordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+        passwordEditText.setSelection(passwordEditText.getText().length());
+        confirmPasswordEditText.setSelection(confirmPasswordEditText.getText().length());
+    }
+
+    void hidePassword() {
+        passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        confirmPasswordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        passwordEditText.setSelection(passwordEditText.getText().length());
+        confirmPasswordEditText.setSelection(confirmPasswordEditText.getText().length());
     }
 
     private boolean isPasswordValid(String password) {
-        return password.matches("^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8}$");
+        return password.matches("^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$");
     }
 
     private void setPasswordInDatabase(String password) {

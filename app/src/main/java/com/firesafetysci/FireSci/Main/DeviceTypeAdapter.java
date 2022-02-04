@@ -78,13 +78,6 @@ public class DeviceTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     ((ViewHolder) holder).constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
                 }
                 break;
-
-            case "wind":
-                ((ViewHolder) holder).deviceTypeImageView.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.wind_fire_suppression));
-                if (selectedDeviceType.equals("wind")) {
-                    ((ViewHolder) holder).constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
-                }
-                break;
         }
     }
 

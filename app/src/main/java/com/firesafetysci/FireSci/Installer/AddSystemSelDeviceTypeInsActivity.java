@@ -54,7 +54,6 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
         deviceTypeArrayList = new ArrayList<>();
         deviceTypeArrayList.add("dar");
         deviceTypeArrayList.add("indi");
-        deviceTypeArrayList.add("wind");
         populateRecyclerView(deviceTypeArrayList, "");
     }
 
@@ -131,7 +130,6 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
 
         deviceTypeArrayList.add("dar");
         deviceTypeArrayList.add("indi");
-        deviceTypeArrayList.add("wind");
         populateRecyclerView(deviceTypeArrayList, newSelectedDeviceType);
     }
 }

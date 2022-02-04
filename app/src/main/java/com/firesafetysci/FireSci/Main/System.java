@@ -5,6 +5,10 @@ public class System {
     private String systemSerialNumber;
     private String systemType;
     private String deviceName;
+    private String room;
+    private String building;
+    private String floor;
+    private String description;
     private int locationId;
 
     public int getId() {
@@ -45,5 +49,37 @@ public class System {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

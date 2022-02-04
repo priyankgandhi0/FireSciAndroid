@@ -32,12 +32,12 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AccountActivityInstaller extends AppCompatActivity {
-    private EditText nameEditText, companyNameEditText, emailEditText, phoneNumberEditText;
+    private EditText nameEditText, lastNameEditText, companyNameEditText, emailEditText, phoneNumberEditText;
     private Button saveChangesButton;
     private LinearLayout progressBar;
     private TextView changeYourPasswordTextView, logoutTextView;
 
-    String firstNameGlobal = "", companyNameGlobal = "", emailGlobal = "", phoneNumberGlobal = "";
+    String firstNameGlobal = "", lastNameGlobal = "", companyNameGlobal = "", emailGlobal = "", phoneNumberGlobal = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class AccountActivityInstaller extends AppCompatActivity {
 
     private void initViews() {
         nameEditText = findViewById(R.id.nameEditTextAccountInstaller);
+        lastNameEditText = findViewById(R.id.lastNameEditTextAccountInstaller);
         companyNameEditText = findViewById(R.id.companyNameEditTextAccountInstaller);
         emailEditText = findViewById(R.id.emailEditTextAccountInstaller);
         phoneNumberEditText = findViewById(R.id.phoneNumberEditTextAccountInstaller);
@@ -84,11 +85,12 @@ public class AccountActivityInstaller extends AppCompatActivity {
     private void setOnClickListeners() {
         saveChangesButton.setOnClickListener(v -> {
             String name = nameEditText.getText().toString().trim();
+            String lastName = lastNameEditText.getText().toString().trim();
             String companyName = companyNameEditText.getText().toString().trim();
             String email = emailEditText.getText().toString().trim();
             String phoneNumber = phoneNumberEditText.getText().toString().trim();
 
-            if (name.isEmpty() || companyName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
+            if (name.isEmpty() || lastName.isEmpty() || companyName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
                 Snackbar.make(findViewById(R.id.saveChangesButtonAccountInstaller), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -102,7 +104,7 @@ public class AccountActivityInstaller extends AppCompatActivity {
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
-            } else if (name.equals(firstNameGlobal) && companyName.equals(companyNameGlobal) && email.equals(emailGlobal) && phoneNumber.equals(phoneNumberGlobal)) {
+            } else if (name.equals(firstNameGlobal) && lastName.equals(lastNameGlobal) && companyName.equals(companyNameGlobal) && email.equals(emailGlobal) && phoneNumber.equals(phoneNumberGlobal)) {
                 Snackbar.make(findViewById(R.id.saveChangesButtonAccountInstaller), "No Changes made to the user details!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -119,7 +121,7 @@ public class AccountActivityInstaller extends AppCompatActivity {
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 phoneNumberEditText.clearFocus();
-                editUserDetails(name, companyName, email, phoneNumber);
+                editUserDetails(name, lastName, companyName, email, phoneNumber);
             }
         });
 
@@ -166,11 +168,12 @@ public class AccountActivityInstaller extends AppCompatActivity {
 
                         if (response.equals("found")) {
                             String firstName = jsonObject.getString("first_name");
+                            String lastName = jsonObject.getString("last_name");
                             String companyName = jsonObject.getString("company_name");
                             String email = jsonObject.getString("email");
                             String phoneNumber = jsonObject.getString("phone");
 
-                            setDefaultValuesInViews(firstName, companyName, email, phoneNumber);
+                            setDefaultValuesInViews(firstName, lastName, companyName, email, phoneNumber);
 
                         } else {
                             Snackbar.make(findViewById(R.id.saveChangesButtonAccountInstaller), "Failed! Please try again!!!", 1250)
@@ -211,24 +214,26 @@ public class AccountActivityInstaller extends AppCompatActivity {
     }
 
     // Set Default Values
-    private void setDefaultValuesInViews(String firstName, String companyName, String email, String phoneNumber) {
+    private void setDefaultValuesInViews(String firstName, String lastName, String companyName, String email, String phoneNumber) {
         nameEditText.setText(firstName);
+        lastNameEditText.setText(lastName);
         companyNameEditText.setText(companyName);
         emailEditText.setText(email);
         phoneNumberEditText.setText(phoneNumber);
 
         this.firstNameGlobal = firstName;
+        this.lastNameGlobal = lastName;
         this.companyNameGlobal = companyName;
         this.emailGlobal = email;
         this.phoneNumberGlobal = phoneNumber;
     }
 
     // Edit user details in database
-    private void editUserDetails(String firstName, String companyName, String email, String phoneNumber) {
+    private void editUserDetails(String firstName, String lastName, String companyName, String email, String phoneNumber) {
         progressBar.setVisibility(View.VISIBLE);
 
         String fireSciPin = SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin();
-        String URL = "http://firesafetysci.com/android_app/api/edit_user_data_by_firesci_pin.php?firesci_pin=" + fireSciPin + "&first_name=" + firstName +
+        String URL = "http://firesafetysci.com/android_app/api/edit_user_data_by_firesci_pin.php?firesci_pin=" + fireSciPin + "&first_name=" + firstName  + "&last_name=" + lastName +
                 "&company_name=" + companyName + "&email=" + email + "&phone_number=" + phoneNumber;
 
         StringRequest stringRequest = new StringRequest(

@@ -45,7 +45,7 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     public static String selectedDeviceType;
 
     private Button addSystemButton;
-    private EditText deviceNameEditText;
+    private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private LinearLayout progressBar;
 
     @Override
@@ -71,7 +71,11 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        deviceNameEditText = findViewById(R.id.deviceNameEditTextAddSysIns);
+        deviceNameEditText = findViewById(R.id.deviceNameEditText);
+        roomEditText = findViewById(R.id.roomEditText);
+        buildingEditText = findViewById(R.id.buildingEditText);
+        floorEditText = findViewById(R.id.floorEditText);
+        descriptionEditText = findViewById(R.id.descriptionEditText);
         addSystemButton = findViewById(R.id.addSystemButtonAddSysIns);
         progressBar = findViewById(R.id.progressBarAddNewSystemInstaller);
     }
@@ -79,9 +83,13 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     private void setOnClickListeners() {
         addSystemButton.setOnClickListener(v -> {
             String deviceName = deviceNameEditText.getText().toString().trim();
+            String room = roomEditText.getText().toString().trim();
+            String building = buildingEditText.getText().toString().trim();
+            String floor = floorEditText.getText().toString().trim();
+            String description = descriptionEditText.getText().toString().trim();
 
-            if (deviceName.isEmpty()) {
-                Snackbar.make(findViewById(R.id.addSystemButtonAddSysIns), "Please enter the Device Name and try again!", 1250)
+            if (deviceName.isEmpty() || description.isEmpty()) {
+                Snackbar.make(findViewById(R.id.addSystemButtonAddSysIns), "Please enter the required fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -97,17 +105,21 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 deviceNameEditText.clearFocus();
-                addSystemInDatabase(enteredSerialNumber, selectedDeviceType, deviceName, location.getId());
+                addSystemInDatabase(enteredSerialNumber, selectedDeviceType, location.getId(), deviceName, room, building, floor, description);
             }
         });
     }
 
-    private void addSystemInDatabase(String enteredSerialNumber, String selectedDeviceType, String deviceName, int locationId) {
+    private void addSystemInDatabase(String enteredSerialNumber, String selectedDeviceType, int locationId, String deviceName, String room, String building, String floor, String description) {
         String uri = Uri.parse("http://firesafetysci.com/android_app/api/add_new_system.php?system_serial_number=")
                 .buildUpon()
                 .appendQueryParameter("system_serial_number", enteredSerialNumber)
                 .appendQueryParameter("system_type", selectedDeviceType)
                 .appendQueryParameter("device_name", deviceName)
+                .appendQueryParameter("room", room)
+                .appendQueryParameter("building", building)
+                .appendQueryParameter("floor", floor)
+                .appendQueryParameter("desc", description)
                 .appendQueryParameter("location_id", String.valueOf(locationId))
                 .build().toString();
 

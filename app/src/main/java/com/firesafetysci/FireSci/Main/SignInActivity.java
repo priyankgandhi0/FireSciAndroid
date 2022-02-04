@@ -3,9 +3,12 @@ package com.firesafetysci.FireSci.Main;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.AccountRegistration.ForgotPasswordActivity;
+import com.firesafetysci.FireSci.Customer.HomePageCustomerActivity;
 import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Installer.HomePageInstallerActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,6 +36,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText fireSciPinEmailEditText, passwordEditText;
     private TextView forgotPasswordTextView;
     private CheckBox keepMeSignedInCheckBox;
+    private CheckBox showPasswordCheckBox;
     private Button signInButton;
     private LinearLayout progressBar;
 
@@ -50,6 +55,16 @@ public class SignInActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    void showPassword() {
+        passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        passwordEditText.setSelection(passwordEditText.getText().length());
+    }
+
+    void hidePassword() {
+        passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        passwordEditText.setSelection(passwordEditText.getText().length());
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -61,6 +76,7 @@ public class SignInActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditTextSignIn);
         forgotPasswordTextView = findViewById(R.id.forgotPasswordTextViewSignIn);
         keepMeSignedInCheckBox = findViewById(R.id.keepMeSignedInCheckBox);
+        showPasswordCheckBox = findViewById(R.id.showPasswordCheckBox);
         signInButton = findViewById(R.id.signInButton);
         progressBar = findViewById(R.id.progressBarSignIn);
     }
@@ -95,6 +111,15 @@ public class SignInActivity extends AppCompatActivity {
             Intent intent = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
         });
+
+        //Set Show Password Change Listener
+        showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                showPassword();
+            } else {
+                hidePassword();
+            }
+        });
     }
 
     private void sigIn(String fireSciPinEmail, String password) {
@@ -123,26 +148,19 @@ public class SignInActivity extends AppCompatActivity {
                             SharedPrefManager.getInstance(getApplicationContext()).setInstallerOrCustomer(installerOrCustomer);
                             SharedPrefManager.getInstance(getApplicationContext()).setKeepMeSignedIn(keepMeSignedInCheckBox.isChecked());
 
+                            Intent intent;
                             if (installerOrCustomer == 1) {
-                                Intent intent = new Intent(SignInActivity.this, HomePageInstallerActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
-                                finish();
+                                intent = new Intent(SignInActivity.this, HomePageInstallerActivity.class);
                             } else {
-                                Intent intent = new Intent(SignInActivity.this, HomePageInstallerActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
-                                finish();
+                                intent = new Intent(SignInActivity.this, HomePageCustomerActivity.class);
                             }
-
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
                             finish();
-
+                            
                         } else {
                             Snackbar.make(findViewById(R.id.signInButton), "Email/FireSci Pin or Password incorrect!", 1250)
                                     .setAction("Action", null)

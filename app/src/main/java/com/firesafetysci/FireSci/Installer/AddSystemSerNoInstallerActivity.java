@@ -107,13 +107,21 @@ public class AddSystemSerNoInstallerActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(result);
                         String response = jsonObject.getString("response");
+                        String doesSystemExist = jsonObject.getString("exists");
 
                         if (response.equals("found")) {
-                            Intent intent = new Intent(AddSystemSerNoInstallerActivity.this, AddSystemSelDeviceTypeInsActivity.class);
-                            startActivityForResult(intent, 0);
-                            AddSystemSelDeviceTypeInsActivity.location = location;
-                            AddSystemSelDeviceTypeInsActivity.enteredSerialNumber = serialNumber;
-
+                            if (doesSystemExist.equals("yes")) {
+                                Snackbar.make(findViewById(R.id.continueButtonAddSysIns), "System Already exists!", 1250)
+                                        .setAction("Action", null)
+                                        .setActionTextColor(Color.WHITE)
+                                        .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                                        .show();
+                            } else {
+                                Intent intent = new Intent(AddSystemSerNoInstallerActivity.this, AddSystemSelDeviceTypeInsActivity.class);
+                                startActivityForResult(intent, 0);
+                                AddSystemSelDeviceTypeInsActivity.location = location;
+                                AddSystemSelDeviceTypeInsActivity.enteredSerialNumber = serialNumber;
+                            }
                         } else {
                             serNoNotRecognizedTextView.setVisibility(View.VISIBLE);
                         }

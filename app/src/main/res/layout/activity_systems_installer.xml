@@ -72,7 +72,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:text="Chip Soul Technology PVT Ltd"
                 android:textColor="@color/blue"
@@ -94,30 +94,71 @@
                 app:srcCompat="@drawable/add_icon"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
+            <ImageButton
+                android:id="@+id/deleteLocationButtonInstaller"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="@+id/dateTextViewInstaller"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/dateTextViewInstaller"
+                app:srcCompat="@drawable/delete_icon"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
             <TextView
                 android:id="@+id/dateTextViewInstaller"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="Sat, Sep 11"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/companyTextViewSystemsInstaller"
+                app:layout_constraintStart_toStartOf="@+id/companyTextViewSystemsInstaller"
+                app:layout_constraintTop_toBottomOf="@+id/companyTextViewSystemsInstaller" />
+
+            <TextView
+                android:id="@+id/locationDescriptionTextViewInstaller"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="start"
+                android:text="Location Description:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/companyTextViewSystemsInstaller" />
+                app:layout_constraintTop_toBottomOf="@+id/dateTextViewInstaller" />
+
+            <TextView
+                android:id="@+id/addressTextViewInstaller"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="start"
+                android:text="Address:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/locationDescriptionTextViewInstaller" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/systemsRecyclerViewInstaller"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateTextViewInstaller" />
+                app:layout_constraintTop_toBottomOf="@+id/addressTextViewInstaller" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

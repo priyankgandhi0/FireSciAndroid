@@ -68,8 +68,20 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
     private void setOnClickListeners() {
         continueButton.setOnClickListener(v -> {
             if (isEmailVerified) {
-                Intent intent = new Intent(AccountRegistrationEmailVerificationActivity.this, AccountRegistrationTwoStepVerificationActivity.class);
+                Snackbar.make(findViewById(R.id.continueButtonEmailVerification), "Account Created Successfully!", 1250)
+                        .setAction("Action", null)
+                        .setActionTextColor(Color.WHITE)
+                        .setBackgroundTint(getResources().getColor(R.color.colorAccent))
+                        .show();
+
+                //Go to Sign in or Register Activity
+                Intent intent = new Intent(AccountRegistrationEmailVerificationActivity.this, RegisterOrSignInActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
+                finish();
 
             } else {
                 Snackbar.make(findViewById(R.id.continueButtonEmailVerification), "Email not verified!", 1250)

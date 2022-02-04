@@ -31,7 +31,8 @@ import java.util.Objects;
 
 public class EditLocationInstallerActivity extends AppCompatActivity {
     private EditText companyNameEditText, cityEditText, stateOrProvinceEditText, addressEditText,
-            zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText;
+            zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText, customerFireSciPin2EditText,
+            customerFireSciPin3EditText;
     private Button saveChangesButton;
     private LinearLayout progressBar;
     private CountryCodePicker countryPicker;
@@ -69,6 +70,8 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
         zipcodeEditText = findViewById(R.id.zipcodeEditTextEditLocationIns);
         locationDescriptionEditText = findViewById(R.id.locationDescriptionEditTextEditLocationIns);
         customerFireSciPinEditText = findViewById(R.id.customerFiresciPinEditTextEditLocationIns);
+        customerFireSciPin2EditText = findViewById(R.id.customerFiresciPin2EditTextEditLocationIns);
+        customerFireSciPin3EditText = findViewById(R.id.customerFiresciPin3EditTextEditLocationIns);
         saveChangesButton = findViewById(R.id.saveChangesButtonEditLocationInstaller);
         progressBar = findViewById(R.id.progressBarEditLocationInstaller);
         countryPicker = findViewById(R.id.countryPickerEditLocationInstaller);
@@ -83,6 +86,8 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             zipcodeEditText.setText(locationToEdit.getZipcode());
             locationDescriptionEditText.setText(locationToEdit.getLocationDescription());
             customerFireSciPinEditText.setText(locationToEdit.getCustomerFiresciPin());
+            customerFireSciPin2EditText.setText(locationToEdit.getCustomerFiresciPin2());
+            customerFireSciPin3EditText.setText(locationToEdit.getCustomerFiresciPin3());
             countryPicker.setCountryForNameCode(getCountryCode(locationToEdit.getCountry()));
         }
     }
@@ -107,9 +112,11 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             String zipCode = zipcodeEditText.getText().toString().trim();
             String locationDescription = locationDescriptionEditText.getText().toString().trim();
             String customerFireSciPin = customerFireSciPinEditText.getText().toString().trim();
+            String customerFireSciPin2 = customerFireSciPin2EditText.getText().toString().trim();
+            String customerFireSciPin3 = customerFireSciPin3EditText.getText().toString().trim();
 
             if (companyName.isEmpty() || city.isEmpty() || state.isEmpty() || address.isEmpty() ||
-                    zipCode.isEmpty() || locationDescription.isEmpty() || customerFireSciPin.isEmpty()) {
+                    zipCode.isEmpty() || locationDescription.isEmpty()) {
                 Snackbar.make(findViewById(R.id.saveChangesButtonEditLocationInstaller), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -126,13 +133,13 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 customerFireSciPinEditText.clearFocus();
-                addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin);
+                addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
             }
         });
     }
 
-    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin) {
-        String URL = "http://firesafetysci.com/android_app/api/edit_location.php?location_id=" + locationToEdit.getId() + "&customer_firesci_pin=" + customerFireSciPin +
+    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {
+        String URL = "http://firesafetysci.com/android_app/api/edit_location.php?location_id=" + locationToEdit.getId() + "&customer_firesci_pin=" + customerFireSciPin + "&customer_firesci_pin_2=" + customerFireSciPin2 + "&customer_firesci_pin_3=" + customerFireSciPin3 +
                 "&company_name=" + companyName + "&city=" + city + "&state_province=" + state + "&country=" + countryPicker.getSelectedCountryName() + "&address=" + address + "&zipcode=" + zipCode + "&location_description="
                 + locationDescription;
 

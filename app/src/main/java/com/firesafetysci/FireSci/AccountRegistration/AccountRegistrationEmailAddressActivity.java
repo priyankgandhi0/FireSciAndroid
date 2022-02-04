@@ -129,6 +129,13 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
                             Intent intent = new Intent(AccountRegistrationEmailAddressActivity.this, AccountRegistrationAccountCreatedActivity.class);
                             startActivity(intent);
 
+                        } else if (response.equals("exists")) {
+                            Snackbar.make(findViewById(R.id.continueButtonEmail), "Email Address already taken!", 1250)
+                                    .setAction("Action", null)
+                                    .setActionTextColor(Color.WHITE)
+                                    .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                                    .show();
+
                         } else {
                             Snackbar.make(findViewById(R.id.continueButtonEmail), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)

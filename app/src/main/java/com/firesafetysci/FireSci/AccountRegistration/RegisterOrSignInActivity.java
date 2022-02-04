@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firesafetysci.FireSci.Customer.HomePageCustomerActivity;
 import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.SignInActivity;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
@@ -30,15 +31,14 @@ public class RegisterOrSignInActivity extends AppCompatActivity {
         if (isSignedIn) {
             int installerOrCustomer = SharedPrefManager.getInstance(getApplicationContext()).getInstallerOrCustomer();
 
+            Intent intent;
             if (installerOrCustomer == 1) {
-                Intent intent = new Intent(RegisterOrSignInActivity.this, HomePageInstallerActivity.class);
-                startActivity(intent);
-                finish();
+                intent = new Intent(RegisterOrSignInActivity.this, HomePageInstallerActivity.class);
             } else {
-                Intent intent = new Intent(RegisterOrSignInActivity.this, HomePageInstallerActivity.class);
-                startActivity(intent);
-                finish();
+                intent = new Intent(RegisterOrSignInActivity.this, HomePageCustomerActivity.class);
             }
+            startActivity(intent);
+            finish();
         }
     }
 

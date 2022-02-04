@@ -17,8 +17,58 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".AccountRegistration.AccountRegistrationDidntGetEmailActivity"
-            android:exported="true"
+            android:exported="false"
+            android:name=".Main.SystemDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".Customer.AddNewSystemCustomerActivity"
+            android:parentActivityName=".Installer.SystemsInstallerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.AddSystemSelDeviceTypeCusActivity"
+            android:parentActivityName=".Installer.SystemsInstallerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.AddSystemSerNoCustomerActivity"
+            android:parentActivityName=".Installer.SystemsInstallerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.EditSystemCustomerActivity"
+            android:parentActivityName=".Installer.SystemsInstallerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.SystemsCustomerActivity"
+            android:parentActivityName=".Installer.LocationsInstallerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.LocationsCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.ChangeYourPasswordCustomerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.AccountActivityCustomer"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Customer.HomePageCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
@@ -87,8 +137,8 @@
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity"
-            android:parentActivityName=".AccountRegistration.AccountRegistrationEmailVerificationActivity"
+            android:name=".AccountRegistration.AccountRegistrationDidntGetEmailActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
@@ -165,7 +215,6 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Main.SignInActivity"
-            android:parentActivityName=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />

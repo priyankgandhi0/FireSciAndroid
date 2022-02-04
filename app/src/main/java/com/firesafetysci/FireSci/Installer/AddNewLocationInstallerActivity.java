@@ -30,7 +30,8 @@ import java.util.Objects;
 
 public class AddNewLocationInstallerActivity extends AppCompatActivity {
     private EditText companyNameEditText, cityEditText, stateOrProvinceEditText, addressEditText,
-            zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText;
+            zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText, customerFireSciPin2EditText,
+            customerFireSciPin3EditText;
     private Button continueButton;
     private LinearLayout progressBar;
     private CountryCodePicker countryPicker;
@@ -65,6 +66,8 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
         zipcodeEditText = findViewById(R.id.zipCodeEditTextAddNewLocation);
         locationDescriptionEditText = findViewById(R.id.locationDescriptionEditTextAddNewLocation);
         customerFireSciPinEditText = findViewById(R.id.customerFireSciPinEditTextAddNewLocation);
+        customerFireSciPin2EditText = findViewById(R.id.customerFireSciPin2EditTextAddNewLocation);
+        customerFireSciPin3EditText = findViewById(R.id.customerFireSciPin3EditTextAddNewLocation);
         continueButton = findViewById(R.id.continueButtonAddNewLocation);
         progressBar = findViewById(R.id.progressBarAddNewLocation);
         countryPicker = findViewById(R.id.countryPickerAddNewLocation);
@@ -79,9 +82,11 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
             String zipCode = zipcodeEditText.getText().toString().trim();
             String locationDescription = locationDescriptionEditText.getText().toString().trim();
             String customerFireSciPin = customerFireSciPinEditText.getText().toString().trim();
+            String customerFireSciPin2 = customerFireSciPin2EditText.getText().toString().trim();
+            String customerFireSciPin3 = customerFireSciPin3EditText.getText().toString().trim();
 
             if (companyName.isEmpty() || city.isEmpty() || state.isEmpty() || address.isEmpty() ||
-                    zipCode.isEmpty() || locationDescription.isEmpty() || customerFireSciPin.isEmpty()) {
+                    zipCode.isEmpty() || locationDescription.isEmpty()) {
                 Snackbar.make(findViewById(R.id.continueButtonAddNewLocation), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -97,15 +102,15 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
 
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                customerFireSciPinEditText.clearFocus();
-                addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin);
+                customerFireSciPin3EditText.clearFocus();
+                addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
             }
         });
     }
 
-    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin) {
+    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {
         String installerFireSciPin = SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin();
-        String URL = "http://firesafetysci.com/android_app/api/add_new_location.php?installer_firesci_pin=" + installerFireSciPin + "&customer_firesci_pin=" + customerFireSciPin +
+        String URL = "http://firesafetysci.com/android_app/api/add_new_location.php?installer_firesci_pin=" + installerFireSciPin + "&customer_firesci_pin=" + customerFireSciPin + "&customer_firesci_pin_2=" + customerFireSciPin2 + "&customer_firesci_pin_3=" + customerFireSciPin3 +
                 "&company_name=" + companyName + "&city=" + city + "&state_province=" + state + "&country=" + countryPicker.getSelectedCountryName() + "&address=" + address + "&zipcode=" + zipCode + "&location_description="
                 + locationDescription;
 

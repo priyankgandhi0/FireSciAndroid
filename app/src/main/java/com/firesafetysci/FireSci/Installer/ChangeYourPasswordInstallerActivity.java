@@ -106,7 +106,7 @@ public class ChangeYourPasswordInstallerActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        return password.matches("^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8}$");
+        return password.matches("^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$");
     }
 
     //Change Password in Database

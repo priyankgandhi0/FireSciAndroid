@@ -130,6 +130,8 @@ public class LocationsInstallerActivity extends AppCompatActivity implements Loc
                                 location.setId(Integer.parseInt(jsonObject.getString("id")));
                                 location.setInstallerFiresciPin(jsonObject.getString("installer_firesci_pin"));
                                 location.setCustomerFiresciPin(jsonObject.getString("customer_firesci_pin"));
+                                location.setCustomerFiresciPin2(jsonObject.getString("customer_firesci_pin_2"));
+                                location.setCustomerFiresciPin3(jsonObject.getString("customer_firesci_pin_3"));
                                 location.setCompanyName(jsonObject.getString("company_name"));
                                 location.setCity(jsonObject.getString("city"));
                                 location.setStateProvince(jsonObject.getString("state_province"));

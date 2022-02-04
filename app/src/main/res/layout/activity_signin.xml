@@ -139,6 +139,7 @@
                     android:hint="Enter Password"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
+                    android:inputType="textPassword"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:singleLine="true"
@@ -167,12 +168,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
 
+            <CheckBox
+                android:id="@+id/showPasswordCheckBox"
+                android:layout_width="0dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="16dp"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="false"
+                android:text="Show Password"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.078"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/keepMeSignedInCheckBox" />
+
             <Button
                 android:id="@+id/signInButton"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginEnd="50dp"
                 android:fontFamily="sans-serif-black"
                 android:text="Sign In"
@@ -184,7 +201,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/keepMeSignedInCheckBox" />
+                app:layout_constraintTop_toBottomOf="@+id/showPasswordCheckBox" />
 
             <TextView
                 android:id="@+id/forgotPasswordTextViewSignIn"

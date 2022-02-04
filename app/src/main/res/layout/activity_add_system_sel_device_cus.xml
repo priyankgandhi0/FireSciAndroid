@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".AccountRegistration.AccountRegistrationTwoStepVerificationActivity">
+    tools:context=".Customer.AddSystemSelDeviceTypeCusActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -18,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/twoStepVerificationActivityToolbar"
+            android:id="@+id/addSystemDevTypeCustomerActivityToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
@@ -31,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Two Step Verification"
+                android:text="Add a New System"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -39,92 +37,68 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-        android:id="@+id/scrollView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/twoStepVerImageView"
+            <TextView
+                android:id="@+id/titleTextView"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-black"
+                android:paddingBottom="10dp"
+                android:text="Choose your FireSci Device."
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/two_step_ver_img" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/accountCreatedTextView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAddSysSelDevCustomer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="For your security, let's set up Two-Step Verification by E-mail."
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:focusable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/twoStepVerImageView" />
-
-            <TextView
-                android:id="@+id/agreeTermsTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Two-Step Verification will be used with the E-mail address originally provided. This is just to be used as backup, incase someone has signed in to an unknown device, user will receive an E-mail making sure it's them. If it's them, user will just click accept on the E-mail. If not them, user will have option to change password."
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/accountCreatedTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
             <Button
-                android:id="@+id/continueButtonTwoStepVer"
+                android:id="@+id/continueButtonAddSysSelDevCus"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="50dp"
+                android:layout_marginBottom="16dp"
+                android:focusable="false"
                 android:fontFamily="sans-serif-black"
-                android:padding="10dp"
                 android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:cornerRadius="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/agreeTermsTextView"
-                tools:ignore="OnClick" />
-
-            <TextView
-                android:id="@+id/skipTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:text="Skip"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/continueButtonTwoStepVer" />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewAddSysSelDevCustomer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

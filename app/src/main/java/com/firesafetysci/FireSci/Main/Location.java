@@ -4,6 +4,8 @@ public class Location {
     private int id;
     private String installerFiresciPin;
     private String customerFiresciPin;
+    private String customerFiresciPin2;
+    private String customerFiresciPin3;
     private String companyName;
     private String city;
     private String stateProvince;
@@ -90,5 +92,21 @@ public class Location {
 
     public void setLocationDescription(String locationDescription) {
         this.locationDescription = locationDescription;
+    }
+
+    public String getCustomerFiresciPin2() {
+        return customerFiresciPin2;
+    }
+
+    public void setCustomerFiresciPin2(String customerFiresciPin2) {
+        this.customerFiresciPin2 = customerFiresciPin2;
+    }
+
+    public String getCustomerFiresciPin3() {
+        return customerFiresciPin3;
+    }
+
+    public void setCustomerFiresciPin3(String customerFiresciPin3) {
+        this.customerFiresciPin3 = customerFiresciPin3;
     }
 }

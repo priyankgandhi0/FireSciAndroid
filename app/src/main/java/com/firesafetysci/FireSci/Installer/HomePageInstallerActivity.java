@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,9 +20,12 @@ import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Locale;
+
 public class HomePageInstallerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private LinearLayout systemLocationsLinearLayout, addANewLocationLinearLayout;
+    private TextView welcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,9 @@ public class HomePageInstallerActivity extends AppCompatActivity implements Navi
 
         initViews();
         setOnClickListeners();
+        
+        String firstName = SharedPrefManager.getInstance(getApplicationContext()).getFirstName();
+        welcomeTextView.setText((String.format(Locale.US, "Welcome, \n %s!", firstName)));
     }
 
     private void initViews() {
@@ -49,6 +56,8 @@ public class HomePageInstallerActivity extends AppCompatActivity implements Navi
 
         systemLocationsLinearLayout = findViewById(R.id.systemLocationsLinearLayout);
         addANewLocationLinearLayout = findViewById(R.id.addANewLocationLinearLayout);
+
+        welcomeTextView = findViewById(R.id.welcomeTextView);
     }
 
     private void setOnClickListeners() {

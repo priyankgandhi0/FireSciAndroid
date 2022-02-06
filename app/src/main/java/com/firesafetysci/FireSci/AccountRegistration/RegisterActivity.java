@@ -74,6 +74,13 @@ public class RegisterActivity extends AppCompatActivity {
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
+            } else if (fireSciPin.length() != 5 && fireSciPin.length() != 6) {
+                Snackbar.make(findViewById(R.id.continueButtonRegister), "Please enter 5 or 6 digits FireSci Pin and try again!", 1250)
+                        .setAction("Action", null)
+                        .setActionTextColor(Color.WHITE)
+                        .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                        .show();
+
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 fireSciPinEditText.clearFocus();
@@ -98,8 +105,15 @@ public class RegisterActivity extends AppCompatActivity {
                             SharedPrefManager.getInstance(getApplicationContext()).setFiresciPin(fireSciPin);
                             pinNotRecognizedTextView.setVisibility(View.GONE);
 
-                            Intent intent = new Intent(RegisterActivity.this, AccountRegistrationNameActivity.class);
-                            startActivity(intent);
+                            int insOrCus = -1;
+
+                            if (fireSciPin.length() == 5) {
+                                insOrCus = 1;
+                            } else if (fireSciPin.length() == 6) {
+                                insOrCus = 2;
+                            }
+
+                            installerOrCustomerServerOperation(insOrCus, fireSciPin);
 
                         } else {
                             pinNotRecognizedTextView.setVisibility(View.VISIBLE);
@@ -146,4 +160,59 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
     }
 
+
+    private void installerOrCustomerServerOperation(int installerOrCustomer, String fireSciPin) {
+        String URL = "http://firesafetysci.com/android_app/api/set_installer_or_customer.php?firesci_pin=" + fireSciPin + "&ins_or_cus=" + installerOrCustomer;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, URL,
+                result -> {
+                    progressBar.setVisibility(View.GONE);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        String response = jsonObject.getString("response");
+
+                        if (response.equals("successful")) {
+                            Intent intent = new Intent(RegisterActivity.this, AccountRegistrationNameActivity.class);
+                            startActivity(intent);
+
+                        } else {
+                            Snackbar.make(findViewById(R.id.continueButtonRegister), "Failed! Please try again!!!", 1250)
+                                    .setAction("Action", null)
+                                    .setActionTextColor(Color.WHITE)
+                                    .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                                    .show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                },
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    Snackbar.make(findViewById(R.id.continueButtonRegister), "Failed! Please try again!!!", 1250)
+                            .setAction("Action", null)
+                            .setActionTextColor(Color.WHITE)
+                            .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                            .show();
+
+                    error.printStackTrace();
+                }
+        ) {
+            @Override
+            public Map<String, String> getParams() {
+                return new HashMap<>();
+            }
+
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
 }

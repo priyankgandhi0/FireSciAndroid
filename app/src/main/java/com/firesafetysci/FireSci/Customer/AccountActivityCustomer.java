@@ -35,7 +35,7 @@ public class AccountActivityCustomer extends AppCompatActivity {
     private EditText nameEditText, lastNameEditText, companyNameEditText, emailEditText, phoneNumberEditText;
     private Button saveChangesButton;
     private LinearLayout progressBar;
-    private TextView changeYourPasswordTextView, logoutTextView;
+    private TextView changeYourPasswordTextView, logoutTextView, pinTextView;
 
     String firstNameGlobal = "", lastNameGlobal = "", companyNameGlobal = "", emailGlobal = "", phoneNumberGlobal = "";
 
@@ -62,6 +62,8 @@ public class AccountActivityCustomer extends AppCompatActivity {
         } else {
             getUserDataFromDatabase();
         }
+
+        pinTextView.setText(SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin());
     }
 
     @Override
@@ -80,6 +82,7 @@ public class AccountActivityCustomer extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarAccountDetailsCustomer);
         changeYourPasswordTextView = findViewById(R.id.changeYourPasswordTextViewAccountCustomer);
         logoutTextView = findViewById(R.id.logoutTextViewAccountCustomer);
+        pinTextView = findViewById(R.id.pinTextViewCustomer);
     }
 
     private void setOnClickListeners() {
@@ -90,7 +93,7 @@ public class AccountActivityCustomer extends AppCompatActivity {
             String email = emailEditText.getText().toString().trim();
             String phoneNumber = phoneNumberEditText.getText().toString().trim();
 
-            if (name.isEmpty() || lastName.isEmpty() || companyName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
+            if (name.isEmpty() || lastName.isEmpty() || companyName.isEmpty() || email.isEmpty()) {
                 Snackbar.make(findViewById(R.id.saveChangesButtonAccountCustomer), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)

@@ -132,7 +132,7 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
                         if (response.equals("verified")) {
                             isEmailVerified = true;
                             emailVerificationTextView.setText("Email Verified Successfully");
-                            emailVerificationTextView.setTextColor(getResources().getColor(R.color.blue));
+                            emailVerificationTextView.setTextColor(getResources().getColor(R.color.green));
 
                         } else {
                             isEmailVerified = false;

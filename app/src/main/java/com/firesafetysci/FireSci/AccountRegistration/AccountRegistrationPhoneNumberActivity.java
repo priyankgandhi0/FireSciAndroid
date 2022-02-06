@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,6 +32,7 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
     private EditText phoneNumberEditText;
     private Button continueButton;
     private LinearLayout progressBar;
+    private TextView skipTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
         continueButton = findViewById(R.id.continueButtonPhoneNumber);
         progressBar = findViewById(R.id.progressBarPhoneNumber);
+        skipTextView = findViewById(R.id.skipTextView);
     }
 
     private void setOnClickListeners() {
@@ -82,6 +85,11 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
                 phoneNumberEditText.clearFocus();
                 setPhoneNumberInDatabase(phoneNumber);
             }
+        });
+
+        skipTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(AccountRegistrationPhoneNumberActivity.this, AccountRegistrationEmailAddressActivity.class);
+            startActivity(intent);
         });
     }
 

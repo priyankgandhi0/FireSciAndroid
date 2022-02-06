@@ -174,7 +174,6 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationChooseCountryActivity"
-            android:parentActivityName=".AccountRegistration.AccountRegistrationInstallerOrCustomerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
@@ -186,12 +185,6 @@
         <activity
             android:name=".AccountRegistration.AccountRegistrationEmailVerificationActivity"
             android:parentActivityName=".AccountRegistration.AccountRegistrationAccountCreatedActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/ActivityThemeNoActionBar"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".AccountRegistration.AccountRegistrationInstallerOrCustomerActivity"
-            android:parentActivityName=".AccountRegistration.AccountRegistrationNameActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />

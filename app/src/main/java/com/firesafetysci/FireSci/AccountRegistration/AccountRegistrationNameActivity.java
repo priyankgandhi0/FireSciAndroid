@@ -103,7 +103,7 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
 
                         if (response.equals("successful")) {
                             SharedPrefManager.getInstance(getApplicationContext()).setFirstName(firstName);
-                            Intent intent = new Intent(AccountRegistrationNameActivity.this, AccountRegistrationInstallerOrCustomerActivity.class);
+                            Intent intent = new Intent(AccountRegistrationNameActivity.this, AccountRegistrationChooseCountryActivity.class);
                             startActivity(intent);
 
                         } else {

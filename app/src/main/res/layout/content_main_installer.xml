@@ -31,13 +31,24 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/firesci_transparent_logo" />
+
+            <ImageView
                 android:id="@+id/blueBar"
                 android:layout_width="0dp"
                 android:layout_height="10dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logoImageView"
                 app:srcCompat="@drawable/blue_bar" />
 
             <ImageView
@@ -176,8 +187,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="start|center_vertical"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/systemHasDischargedLinearLayout">
@@ -199,18 +212,6 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/logoImageViewBottom"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/systemNeedsInspectionLinearLayout"
-                app:srcCompat="@drawable/firesci_transparent_logo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

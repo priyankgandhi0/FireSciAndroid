@@ -59,7 +59,7 @@
                 android:layout_marginRight="16dp"
                 android:text="Email Verified Successfully"
                 android:textAllCaps="false"
-                android:textColor="@color/blue"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"

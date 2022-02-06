@@ -78,14 +78,14 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
             oldPasswordIncorrectTextView.setVisibility(View.GONE);
 
             if (oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Snackbar.make(findViewById(R.id.changePasswordButton), "Please enter the fields and try again!", 1250)
+                Snackbar.make(findViewById(R.id.changePasswordButtonCustomer), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (!CommonFunctions.isNetworkConnected(ChangeYourPasswordCustomerActivity.this)) {
-                Snackbar.make(findViewById(R.id.changePasswordButton), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.changePasswordButtonCustomer), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -132,7 +132,7 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
                             oldPasswordIncorrectTextView.setVisibility(View.VISIBLE);
 
                         } else {
-                            Snackbar.make(findViewById(R.id.changePasswordButton), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.changePasswordButtonCustomer), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -147,7 +147,7 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.changePasswordButton), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.changePasswordButtonCustomer), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

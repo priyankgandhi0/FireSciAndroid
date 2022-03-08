@@ -1,23 +1,23 @@
 package com.firesafetysci.FireSci.AccountRegistration;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -25,9 +25,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationNameActivity extends AppCompatActivity {
+    private ImageButton backButton;
     private EditText firstNameEditText, lastNameEditText;
     private Button continueButton;
     private LinearLayout progressBar;
@@ -39,12 +39,6 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar nameActivityToolbar = findViewById(R.id.nameActivityToolbar);
-        nameActivityToolbar.setTitle("");
-        setSupportActionBar(nameActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -54,9 +48,10 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        backButton = findViewById(R.id.btnBack);
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
-        continueButton = findViewById(R.id.continueButtonName);
+        continueButton = findViewById(R.id.continueButton);
         progressBar = findViewById(R.id.progressBarName);
     }
 
@@ -66,14 +61,14 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
             String lastName = lastNameEditText.getText().toString().trim();
 
             if (firstName.isEmpty() || lastName.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonName), "Please enter the fields and try again!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (!CommonFunctions.isNetworkConnected(AccountRegistrationNameActivity.this)) {
-                Snackbar.make(findViewById(R.id.continueButtonName), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -85,6 +80,8 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
                 performServerOperation(firstName, lastName);
             }
         });
+
+        backButton.setOnClickListener(v -> onBackPressed());
     }
 
     private void performServerOperation(String firstName, String lastName) {
@@ -107,7 +104,7 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
-                            Snackbar.make(findViewById(R.id.continueButtonName), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -122,7 +119,7 @@ public class AccountRegistrationNameActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonName), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

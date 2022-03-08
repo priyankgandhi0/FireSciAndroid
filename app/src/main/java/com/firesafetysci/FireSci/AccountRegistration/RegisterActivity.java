@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private Button continueButton;
     private EditText fireSciPinEditText;
     private TextView pinNotRecognizedTextView;
@@ -41,19 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar registerActivityToolbar = findViewById(R.id.registerActivityToolbar);
-        registerActivityToolbar.setTitle("");
-        setSupportActionBar(registerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     private void setOnClickListeners() {
@@ -61,21 +48,21 @@ public class RegisterActivity extends AppCompatActivity {
             String fireSciPin = fireSciPinEditText.getText().toString().trim();
 
             if (fireSciPin.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonRegister), "Please enter the FireSci Pin and try again!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter the FireSci Pin and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (!CommonFunctions.isNetworkConnected(RegisterActivity.this)) {
-                Snackbar.make(findViewById(R.id.continueButtonRegister), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (fireSciPin.length() != 5 && fireSciPin.length() != 6) {
-                Snackbar.make(findViewById(R.id.continueButtonRegister), "Please enter 5 or 6 digits FireSci Pin and try again!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter 5 or 6 digits FireSci Pin and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -87,6 +74,8 @@ public class RegisterActivity extends AppCompatActivity {
                 checkFireSciPinInDatabase(fireSciPin);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void checkFireSciPinInDatabase(String fireSciPin) {
@@ -127,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonRegister), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -138,10 +127,8 @@ public class RegisterActivity extends AppCompatActivity {
         ) {
             @Override
             public Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                return params;
+                return new HashMap<>();
             }
-
         };
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -154,7 +141,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void initViews() {
-        continueButton = findViewById(R.id.continueButtonRegister);
+        btnBack = findViewById(R.id.btnBack);
+        continueButton = findViewById(R.id.continueButton);
         fireSciPinEditText = findViewById(R.id.fireSciPinEditTextRegister);
         pinNotRecognizedTextView = findViewById(R.id.pinIsNotRecognizedTextView);
         progressBar = findViewById(R.id.progressBar);
@@ -178,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
-                            Snackbar.make(findViewById(R.id.continueButtonRegister), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -192,7 +180,7 @@ public class RegisterActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonRegister), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

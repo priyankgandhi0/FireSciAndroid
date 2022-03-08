@@ -1,28 +1,29 @@
 package com.firesafetysci.FireSci.Main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.AccountRegistration.ForgotPasswordActivity;
 import com.firesafetysci.FireSci.Customer.HomePageCustomerActivity;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Installer.HomePageInstallerActivity;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -30,15 +31,16 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText fireSciPinEmailEditText, passwordEditText;
     private TextView forgotPasswordTextView;
     private CheckBox keepMeSignedInCheckBox;
     private CheckBox showPasswordCheckBox;
     private Button signInButton;
     private LinearLayout progressBar;
+    private boolean isPasswordChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,22 +49,18 @@ public class SignInActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar signInActivityToolbar = findViewById(R.id.signInActivityToolbar);
-        signInActivityToolbar.setTitle("");
-        setSupportActionBar(signInActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     void showPassword() {
         passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         passwordEditText.setSelection(passwordEditText.getText().length());
+        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_visibility_off, 0);
     }
 
     void hidePassword() {
         passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
         passwordEditText.setSelection(passwordEditText.getText().length());
+        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_visibility, 0);
     }
 
     @Override
@@ -72,15 +70,16 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         fireSciPinEmailEditText = findViewById(R.id.emailEditTextSignIn);
         passwordEditText = findViewById(R.id.passwordEditTextSignIn);
-        forgotPasswordTextView = findViewById(R.id.forgotPasswordTextViewSignIn);
+        forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView);
         keepMeSignedInCheckBox = findViewById(R.id.keepMeSignedInCheckBox);
-        showPasswordCheckBox = findViewById(R.id.showPasswordCheckBox);
         signInButton = findViewById(R.id.signInButton);
         progressBar = findViewById(R.id.progressBarSignIn);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setOnClickListeners() {
         signInButton.setOnClickListener(v -> {
             String fireSciPinEmail = fireSciPinEmailEditText.getText().toString().trim();
@@ -112,14 +111,36 @@ public class SignInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        btnBack.setOnClickListener(v -> onBackPressed());
+
+        passwordEditText.setOnTouchListener((v, event) -> {
+            final int DRAWABLE_LEFT = 0;
+            final int DRAWABLE_TOP = 1;
+            final int DRAWABLE_RIGHT = 2;
+            final int DRAWABLE_BOTTOM = 3;
+
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= (passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    isPasswordChecked = !isPasswordChecked;
+                    if (isPasswordChecked) {
+                        showPassword();
+                    } else {
+                        hidePassword();
+                    }
+                    return true;
+                }
+            }
+            return false;
+        });
+
         //Set Show Password Change Listener
-        showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        /*showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 showPassword();
             } else {
                 hidePassword();
             }
-        });
+        });*/
     }
 
     private void sigIn(String fireSciPinEmail, String password) {
@@ -160,7 +181,7 @@ public class SignInActivity extends AppCompatActivity {
                             startActivity(intent);
                             overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
                             finish();
-                            
+
                         } else {
                             Snackbar.make(findViewById(R.id.signInButton), "Email/FireSci Pin or Password incorrect!", 1250)
                                     .setAction("Action", null)

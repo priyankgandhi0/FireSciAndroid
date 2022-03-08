@@ -6,223 +6,191 @@
     android:layout_height="match_parent"
     tools:context=".Main.SignInActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/signInActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:elevation="0dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Sign In"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
+    <ImageView
+        android:id="@+id/logoImageViewRegister"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/no_description"
+        app:layout_constraintDimensionRatio="2.8:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintWidth_percent="0.6"
+        app:srcCompat="@drawable/logo_transparent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImageViewRegister"
+        app:layout_constraintVertical_bias="0">
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:foregroundGravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo_transparent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/linearLayout13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3">
+                <TextView
+                    android:id="@+id/tvSignIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/sign_in"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSignInToContinue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/please_sign_in_to_continue"
+                    android:textColor="@color/light_grey2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignIn" />
 
                 <TextView
                     android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FireSci Pin or E-mail"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/firesci_pin_or_e_mail"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                    app:layout_constraintTop_toBottomOf="@id/tvSignInToContinue" />
 
                 <EditText
                     android:id="@+id/emailEditTextSignIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_border"
-                    android:hint="FireSci Access Code or E-mail"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/firesci_access_code_or_e_mail"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailTextView" />
 
                 <TextView
                     android:id="@+id/passwordTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Password"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/password"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/password"
-                    tools:layout_editor_absoluteY="347dp" />
+                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                    app:layout_constraintTop_toBottomOf="@id/emailEditTextSignIn" />
 
                 <EditText
                     android:id="@+id/passwordEditTextSignIn"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
                     android:background="@drawable/edit_text_border"
-                    android:hint="Enter Password"
+                    android:drawableEnd="@drawable/ic_password_visibility"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_password"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor"
+                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                    app:layout_constraintTop_toBottomOf="@id/passwordTextView" />
+
+                <CheckBox
+                    android:id="@+id/keepMeSignedInCheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins"
+                    android:paddingStart="5dp"
+                    android:text="@string/keep_me_signed_in"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                    app:layout_constraintTop_toBottomOf="@id/passwordEditTextSignIn"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/signInButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/sign_in"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:cornerRadius="50dp"
+                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                    app:layout_constraintTop_toBottomOf="@id/keepMeSignedInCheckBox" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/forgotPasswordTextView"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/forgot_password_question_mark"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    tools:ignore="TouchTargetSizeCheck"
-                    tools:layout_editor_absoluteY="371dp" />
-
-            </LinearLayout>
-
-            <CheckBox
-                android:id="@+id/keepMeSignedInCheckBox"
-                android:layout_width="0dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="true"
-                android:text="keep Me Signed In"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.078"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
-
-            <CheckBox
-                android:id="@+id/showPasswordCheckBox"
-                android:layout_width="0dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="16dp"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="false"
-                android:text="Show Password"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.078"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/keepMeSignedInCheckBox" />
-
-            <Button
-                android:id="@+id/signInButton"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Sign In"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showPasswordCheckBox" />
-
-            <TextView
-                android:id="@+id/forgotPasswordTextViewSignIn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Forgot Password?"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signInButton" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/signInButton" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:id="@+id/progressBarSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/progress_bar_back"
+        android:elevation="5dp"
         android:padding="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

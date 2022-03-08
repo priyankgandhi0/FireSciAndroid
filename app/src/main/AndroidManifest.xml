@@ -17,81 +17,94 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:exported="false"
             android:name=".Main.SystemDetailsActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AddNewSystemCustomerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AddSystemSelDeviceTypeCusActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AddSystemSerNoCustomerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.EditSystemCustomerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.SystemsCustomerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.LocationsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.LocationsCustomerActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.ChangeYourPasswordCustomerActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AccountActivityCustomer"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.HomePageCustomerActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.ChangeYourPasswordInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.AccountActivityInstaller"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AccountActivityInstaller"
+            android:exported="true"
             android:parentActivityName=".Installer.HomePageInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.EditLocationInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.LocationsInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.HomePageInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
@@ -103,35 +116,41 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.EditSystemInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddNewSystemInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.AddSystemSelDeviceTypeInsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddSystemSelDeviceTypeInsActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddSystemSerNoInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.SystemsInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.LocationsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddNewLocationInstallerActivity"
+            android:exported="true"
             android:parentActivityName=".Installer.HomePageInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
@@ -144,80 +163,94 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationAccountCreatedActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationEmailAddressActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationPhoneNumberActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationEmailAddressActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationPhoneNumberActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationChooseCountryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationChooseCountryActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.NewPasswordActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationEmailVerificationActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.AccountRegistrationAccountCreatedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationNameActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.RegisterActivity"
+            android:exported="true"
             android:parentActivityName=".AccountRegistration.RegisterOrSignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.ForgotPasswordActivity"
+            android:exported="true"
             android:parentActivityName=".Main.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Main.SignInActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.RegisterOrSignInActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Main.SplashScreenActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
             tools:ignore="LockedOrientationActivity">
@@ -227,6 +260,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -6,4 +6,27 @@
     <string name="navigation_drawer_open">open navigation drawer</string>
     <string name="navigation_drawer_close">close navigation drawer</string>
 
+    <string name="no_description" />
+    <string name="welcome">Welcome</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_password_question_mark">Forgot Password?</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="please_sign_in_to_continue">Please Sign in to continue</string>
+    <string name="firesci_pin">FireSci PIN</string>
+    <string name="pin_is_not_recognized">Pin is not recognized.</string>
+    <string name="txt_continue">Continue</string>
+    <string name="registration_description">Enter the FireSci pin. Email FireSci to obtain a pin if you don’t have one.</string>
+    <string name="what_is_your_name">What is your Name?</string>
+    <string name="first_name">First Name</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="firesci_pin_or_e_mail">FireSci Pin or E-mail</string>
+    <string name="firesci_access_code_or_e_mail">FireSci Access Code or E-mail</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="keep_me_signed_in">keep Me Signed In</string>
+    <string name="enter_email_address">Enter Email address</string>
 </resources>

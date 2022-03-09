@@ -1,24 +1,24 @@
 package com.firesafetysci.FireSci.AccountRegistration;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText emailAddressEditText, confirmEmailAddressEditText;
     private Button continueButton;
     private LinearLayout progressBar;
@@ -41,12 +41,6 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar emailAddressActivityToolbar = findViewById(R.id.emailAddressActivityToolbar);
-        emailAddressActivityToolbar.setTitle("");
-        setSupportActionBar(emailAddressActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -56,9 +50,10 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         emailAddressEditText = findViewById(R.id.emailAddressEditText);
         confirmEmailAddressEditText = findViewById(R.id.confirmEmailAddressEditText);
-        continueButton = findViewById(R.id.continueButtonEmail);
+        continueButton = findViewById(R.id.continueButton);
         progressBar = findViewById(R.id.progressBarEmailAddress);
         emailsDoNotMatchTextView = findViewById(R.id.emailsDoNotMatchTextView);
         enterValidEmailTextView = findViewById(R.id.enterValidEmailTextView);
@@ -73,14 +68,14 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
             enterValidEmailTextView.setVisibility(View.GONE);
 
             if (emailAddress.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonEmail), "Please enter the email!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter the email!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (confirmEmailAddress.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonEmail), "Please confirm the email!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please confirm the email!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -93,7 +88,7 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
                 enterValidEmailTextView.setVisibility(View.VISIBLE);
 
             } else if (!CommonFunctions.isNetworkConnected(AccountRegistrationEmailAddressActivity.this)) {
-                Snackbar.make(findViewById(R.id.continueButtonEmail), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -105,6 +100,8 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
                 setEmailInDatabase(emailAddress);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private boolean isEmailValid(String emailAddress) {
@@ -130,14 +127,14 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else if (response.equals("exists")) {
-                            Snackbar.make(findViewById(R.id.continueButtonEmail), "Email Address already taken!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Email Address already taken!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                                     .show();
 
                         } else {
-                            Snackbar.make(findViewById(R.id.continueButtonEmail), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -152,7 +149,7 @@ public class AccountRegistrationEmailAddressActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonEmail), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

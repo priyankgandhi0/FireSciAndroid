@@ -113,11 +113,9 @@ public class SignInActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> onBackPressed());
 
+        //Set Show Password Change Listener
         passwordEditText.setOnTouchListener((v, event) -> {
-            final int DRAWABLE_LEFT = 0;
-            final int DRAWABLE_TOP = 1;
             final int DRAWABLE_RIGHT = 2;
-            final int DRAWABLE_BOTTOM = 3;
 
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 if (event.getRawX() >= (passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
@@ -133,7 +131,6 @@ public class SignInActivity extends AppCompatActivity {
             return false;
         });
 
-        //Set Show Password Change Listener
         /*showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 showPassword();

@@ -1,27 +1,28 @@
 package com.firesafetysci.FireSci.AccountRegistration;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -29,14 +30,15 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private Button continueButton;
     private EditText passwordEditText, confirmPasswordEditText;
     private LinearLayout progressBar;
     private TextView passwordsDoNotMatchTextView, mustContainUpperLowerTextView;
-    private CheckBox showPasswordCheckBox;
+    private boolean isPasswordChecked = false;
+    private boolean isConfirmPasswordChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +47,6 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
 
         initViews();
         setOnClickListeners();
-
-        Toolbar createPasswordActivityToolbar = findViewById(R.id.createPasswordActivityToolbar);
-        createPasswordActivityToolbar.setTitle("");
-        setSupportActionBar(createPasswordActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -60,15 +56,16 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         passwordEditText = findViewById(R.id.passwordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
-        continueButton = findViewById(R.id.continueButtonCreatePassword);
+        continueButton = findViewById(R.id.continueButton);
         progressBar = findViewById(R.id.progressBarCreatePassword);
         passwordsDoNotMatchTextView = findViewById(R.id.passwordsDoNotMatchTextView);
         mustContainUpperLowerTextView = findViewById(R.id.mustContainUpperLowerTextView);
-        showPasswordCheckBox = findViewById(R.id.showPasswordCheckBoxReg);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setOnClickListeners() {
         continueButton.setOnClickListener(v -> {
             String password = passwordEditText.getText().toString().trim();
@@ -78,14 +75,14 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
             mustContainUpperLowerTextView.setVisibility(View.GONE);
 
             if (password.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonCreatePassword), "Please enter the password!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter the password!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (confirmPassword.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonCreatePassword), "Please confirm the password!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please confirm the password!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -98,7 +95,7 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
                 mustContainUpperLowerTextView.setVisibility(View.VISIBLE);
 
             } else if (!CommonFunctions.isNetworkConnected(AccountRegistrationCreatePasswordActivity.this)) {
-                Snackbar.make(findViewById(R.id.continueButtonCreatePassword), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -112,29 +109,54 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
         });
 
         //Set Show Password Change Listener
-        showPasswordCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                showPassword();
-            } else {
-                hidePassword();
+        passwordEditText.setOnTouchListener((v, event) -> {
+            final int DRAWABLE_RIGHT = 2;
+
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= (passwordEditText.getRight() - passwordEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    isPasswordChecked = !isPasswordChecked;
+                    if (isPasswordChecked) {
+                        showPassword(passwordEditText);
+                    } else {
+                        hidePassword(passwordEditText);
+                    }
+                    return true;
+                }
             }
+            return false;
         });
+
+        //Set Show Password Change Listener
+        confirmPasswordEditText.setOnTouchListener((v, event) -> {
+            final int DRAWABLE_RIGHT = 2;
+
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                if (event.getRawX() >= (confirmPasswordEditText.getRight() - confirmPasswordEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                    isConfirmPasswordChecked = !isConfirmPasswordChecked;
+                    if (isConfirmPasswordChecked) {
+                        showPassword(confirmPasswordEditText);
+                    } else {
+                        hidePassword(confirmPasswordEditText);
+                    }
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
-    void showPassword() {
-        passwordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        confirmPasswordEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-
-        passwordEditText.setSelection(passwordEditText.getText().length());
-        confirmPasswordEditText.setSelection(confirmPasswordEditText.getText().length());
+    void showPassword(EditText editText) {
+        editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        editText.setSelection(editText.getText().length());
+        editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_visibility_off, 0);
     }
 
-    void hidePassword() {
-        passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        confirmPasswordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-        passwordEditText.setSelection(passwordEditText.getText().length());
-        confirmPasswordEditText.setSelection(confirmPasswordEditText.getText().length());
+    void hidePassword(EditText editText) {
+        editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        editText.setSelection(editText.getText().length());
+        editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_password_visibility, 0);
     }
 
     private boolean isPasswordValid(String password) {
@@ -159,7 +181,7 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
                             startActivity(intent);
 
                         } else {
-                            Snackbar.make(findViewById(R.id.continueButtonCreatePassword), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -174,7 +196,7 @@ public class AccountRegistrationCreatePasswordActivity extends AppCompatActivity
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonCreatePassword), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

@@ -8,10 +8,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firesafetysci.FireSci.Customer.HomePageCustomerActivity;
-import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.Main.SignInActivity;
-import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.firesafetysci.FireSci.Installer.HomePageInstallerActivity;
+import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 
 public class RegisterOrSignInActivity extends AppCompatActivity {
     private Button registerButton, signInButton;
@@ -55,7 +54,7 @@ public class RegisterOrSignInActivity extends AppCompatActivity {
         });
 
         signInButton.setOnClickListener(v -> {
-            Intent intent = new Intent(RegisterOrSignInActivity.this, SignInActivity.class);
+            Intent intent = new Intent(RegisterOrSignInActivity.this, AccountRegistrationEmailAddressActivity.class);
             startActivity(intent);
 
         });

@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText phoneNumberEditText;
     private Button continueButton;
     private LinearLayout progressBar;
@@ -41,12 +41,6 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar phoneNumberActivityToolbar = findViewById(R.id.phoneNumberActivityToolbar);
-        phoneNumberActivityToolbar.setTitle("");
-        setSupportActionBar(phoneNumberActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -56,8 +50,9 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
-        continueButton = findViewById(R.id.continueButtonPhoneNumber);
+        continueButton = findViewById(R.id.continueButton);
         progressBar = findViewById(R.id.progressBarPhoneNumber);
         skipTextView = findViewById(R.id.skipTextView);
     }
@@ -67,14 +62,14 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
             String phoneNumber = phoneNumberEditText.getText().toString().trim();
 
             if (phoneNumber.isEmpty()) {
-                Snackbar.make(findViewById(R.id.continueButtonPhoneNumber), "Please enter the phone number!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please enter the phone number!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
                         .show();
 
             } else if (!CommonFunctions.isNetworkConnected(AccountRegistrationPhoneNumberActivity.this)) {
-                Snackbar.make(findViewById(R.id.continueButtonPhoneNumber), "Please connect to the internet!", 1250)
+                Snackbar.make(findViewById(R.id.continueButton), "Please connect to the internet!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
                         .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -91,6 +86,8 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
             Intent intent = new Intent(AccountRegistrationPhoneNumberActivity.this, AccountRegistrationEmailAddressActivity.class);
             startActivity(intent);
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void setPhoneNumberInDatabase(String phoneNumber) {
@@ -112,7 +109,7 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
-                            Snackbar.make(findViewById(R.id.continueButtonPhoneNumber), "Failed! Please try again!!!", 1250)
+                            Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                                     .setAction("Action", null)
                                     .setActionTextColor(Color.WHITE)
                                     .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
@@ -127,7 +124,7 @@ public class AccountRegistrationPhoneNumberActivity extends AppCompatActivity {
                 },
                 error -> {
                     progressBar.setVisibility(View.GONE);
-                    Snackbar.make(findViewById(R.id.continueButtonPhoneNumber), "Failed! Please try again!!!", 1250)
+                    Snackbar.make(findViewById(R.id.continueButton), "Failed! Please try again!!!", 1250)
                             .setAction("Action", null)
                             .setActionTextColor(Color.WHITE)
                             .setBackgroundTint(getResources().getColor(R.color.snackbarColor))

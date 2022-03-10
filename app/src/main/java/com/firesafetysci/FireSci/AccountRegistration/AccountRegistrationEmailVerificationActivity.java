@@ -1,22 +1,22 @@
 package com.firesafetysci.FireSci.AccountRegistration;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -24,9 +24,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationEmailVerificationActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private Button continueButton;
     private TextView emailVerificationTextView, tryAgainTextView, didntGetEmailTextView, clickOnLinkTextView;
     private LinearLayout progressBar;
@@ -40,12 +40,6 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
         initViews();
         setOnClickListeners();
 
-        Toolbar emailVerificationActivityToolbar = findViewById(R.id.emailVerificationActivityToolbar);
-        emailVerificationActivityToolbar.setTitle("");
-        setSupportActionBar(emailVerificationActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         String fireSciPin = SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin();
         checkEmailVerification(fireSciPin);
     }
@@ -57,6 +51,7 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         continueButton = findViewById(R.id.continueButtonEmailVerification);
         progressBar = findViewById(R.id.progressBarEmailVerification);
         emailVerificationTextView = findViewById(R.id.emailVerificationTextView);
@@ -101,6 +96,8 @@ public class AccountRegistrationEmailVerificationActivity extends AppCompatActiv
             Intent intent = new Intent(AccountRegistrationEmailVerificationActivity.this, AccountRegistrationDidntGetEmailActivity.class);
             startActivityForResult(intent, 2);
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     @Override

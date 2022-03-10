@@ -5,18 +5,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -24,9 +24,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountRegistrationAccountCreatedActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private Button continueButtonAccountCreated;
     private TextView emailSentTextView, emailNotSentTextView;
     private LinearLayout progressBar;
@@ -44,12 +44,6 @@ public class AccountRegistrationAccountCreatedActivity extends AppCompatActivity
         String firstName = SharedPrefManager.getInstance(getApplicationContext()).getFirstName();
 
         sendVerificationCodeEmail(fireSciPin, email, firstName);
-
-        Toolbar accountCreatedActivityToolbar = findViewById(R.id.accountCreatedActivityToolbar);
-        accountCreatedActivityToolbar.setTitle("");
-        setSupportActionBar(accountCreatedActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -59,6 +53,7 @@ public class AccountRegistrationAccountCreatedActivity extends AppCompatActivity
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         continueButtonAccountCreated = findViewById(R.id.continueButtonAccountCreated);
         emailSentTextView = findViewById(R.id.emailSentTextView);
         emailNotSentTextView = findViewById(R.id.emailNotSentTextView);
@@ -70,6 +65,8 @@ public class AccountRegistrationAccountCreatedActivity extends AppCompatActivity
             Intent intent = new Intent(AccountRegistrationAccountCreatedActivity.this, AccountRegistrationEmailVerificationActivity.class);
             startActivityForResult(intent, 1);
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     @Override

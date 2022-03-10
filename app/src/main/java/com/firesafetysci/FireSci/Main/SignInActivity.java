@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -143,6 +144,7 @@ public class SignInActivity extends AppCompatActivity {
     private void sigIn(String fireSciPinEmail, String password) {
         String URL = "http://firesafetysci.com/android_app/api/sign_in_user.php?pin_or_email=" + fireSciPinEmail + "&password=" + password;
 
+        Log.e(SignInActivity.class.getSimpleName(), URL);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET, URL,
                 result -> {

@@ -62,4 +62,21 @@
     <string name="confirm_your_email">Confirm Your Email</string>
     <string name="e_mails_do_not_match">E-mails do not match.</string>
     <string name="please_enter_a_valid_e_mail_address">Please enter a valid E-mail address.</string>
+    <string name="verify_your_e_mail">Verify Your E-mail</string>
+    <string name="account_created_check_e_mail">Account created! Please check your e-mail to verify account.</string>
+    <string name="email_sent_in_detail">We sent an email to proposed email address. To activate your account, please click on the link in the email and press continue.</string>
+    <string name="check_in_spam_folder">Make sure to check the spam folder for email.</string>
+    <string name="email_sent">Email Sent!</string>
+    <string name="click_on_the_link_in_email_and">Click on the link in email and</string>
+    <string name="try_again">Try Again!</string>
+    <string name="didn_t_get_an_e_mail">Didn\'t get an E-mail?</string>
+    <string name="didn_t_receive_our_e_mail_detail">Didn\'t receive our E-mail? This may be due to following reasons.</string>
+    <string name="check_your_spam_trash_folder_as_it_may_be_moved">Check your spam/trash folder as it may be moved.</string>
+    <string name="your_e_mail_may_have_a_typo">Your E-mail may have a typo. Check to see if you have used your correct E-mail address.</string>
+    <string name="try_re_sending_e_mail">Try re-sending E-mail if none of the above seem to be the issue.</string>
+    <string name="resend_email">Resend Email</string>
+    <string name="use_another_e_mail">Use Another E-mail</string>
+    <string name="email_not_sent">Email Not Sent!</string>
+    <string name="verifying_your_e_mail">Verifying your E-mail…</string>
+    <string name="email_verified_successfully">Email Verified Successfully</string>
 </resources>

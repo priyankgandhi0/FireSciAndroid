@@ -4,134 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".AccountRegistration.AccountRegistrationAccountCreatedActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <View
+        android:id="@+id/viewTopBar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.11"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/accountCreatedActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Verify your E-mail"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/accountCreatedTextView"
-        android:layout_width="0dp"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:text="Account created! Please check your e-mail to verify account"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/verify_your_e_mail"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
-
-    <TextView
-        android:id="@+id/agreeTermsTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="We sent an email to proposed email address. To activate your account, please click on the link in the email and press continue."
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountCreatedTextView" />
-
-    <TextView
-        android:id="@+id/checkSpamTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Make sure to check the spam folder for email."
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agreeTermsTextView" />
-
-    <TextView
-        android:id="@+id/emailSentTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Email Sent!"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkSpamTextView" />
-
-    <TextView
-        android:id="@+id/emailNotSentTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Email Not Sent!"
-        android:textColor="@color/red"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agreeTermsTextView" />
-
-    <Button
-        android:id="@+id/continueButtonAccountCreated"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="50dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Continue"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:backgroundTint="@color/colorPrimary"
-        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailSentTextView" />
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewTopBar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/accountCreatedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/account_created_check_e_mail"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/agreeTermsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/email_sent_in_detail"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/accountCreatedTextView" />
+
+            <TextView
+                android:id="@+id/checkSpamTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/check_in_spam_folder"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/agreeTermsTextView" />
+
+            <TextView
+                android:id="@+id/emailSentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/email_sent"
+                android:textAlignment="center"
+                android:textColor="@color/colorLink"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkSpamTextView" />
+
+            <TextView
+                android:id="@+id/emailNotSentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/email_not_sent"
+                android:textColor="@color/red"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/agreeTermsTextView" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueButtonAccountCreated"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/txt_continue"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailSentTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarAccountCreated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/progress_bar_back"
+        android:elevation="5dp"
         android:padding="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

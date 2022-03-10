@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/colorBackground"
     tools:context=".AccountRegistration.AccountRegistrationChooseCountryActivity">
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -96,8 +96,8 @@
                 android:gravity="center_vertical"
                 android:textAllCaps="false"
                 app:ccpDialog_showFlag="true"
-                app:ccp_contentColor="@color/black"
                 app:ccp_arrowColor="@color/black"
+                app:ccp_contentColor="@color/black"
                 app:ccp_defaultNameCode="US"
                 app:ccp_showFullName="true"
                 app:ccp_showNameCode="false"

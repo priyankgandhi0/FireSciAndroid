@@ -153,7 +153,6 @@
                     android:singleLine="true"
                     android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/emailAddressEditText"
                     app:layout_constraintStart_toStartOf="@id/emailAddressEditText"
                     app:layout_constraintTop_toBottomOf="@id/confirmEmailAddressTextView" />

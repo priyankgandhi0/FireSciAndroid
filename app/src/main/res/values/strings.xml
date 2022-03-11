@@ -79,4 +79,7 @@
     <string name="email_not_sent">Email Not Sent!</string>
     <string name="verifying_your_e_mail">Verifying your E-mail…</string>
     <string name="email_verified_successfully">Email Verified Successfully</string>
+    <string name="home">Home</string>
+    <string name="system_has_discharged">System Has Discharged.</string>
+    <string name="system_needs_inspection">System Needs Inspection.</string>
 </resources>

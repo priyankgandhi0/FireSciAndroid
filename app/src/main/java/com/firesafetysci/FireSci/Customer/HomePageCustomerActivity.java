@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +34,7 @@ import com.firesafetysci.FireSci.Main.SharedPrefManager;
 import com.firesafetysci.FireSci.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,9 +49,9 @@ import java.util.Map;
 public class HomePageCustomerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LocationAdapter.OnLocationClickListener {
     private ImageButton btnNav;
     private ImageButton btnInfo;
-    private DrawerLayout drawerLayout;
-    private LinearLayout systemLocationsLinearLayout, viewAccountLinearLayout;
+    private AdvanceDrawerLayout drawerLayout;
     private TextView welcomeTextView;
+    private TextView navHomeTextView, navViewAccountTextView, navContactTextView, navLogoutTextView;
     private RecyclerView locationsRecyclerViewCustomer;
     private ImageView noLocationsFoundImageView;
     private LinearLayout progressBar;
@@ -92,6 +93,16 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
         locationsRecyclerViewCustomer = findViewById(R.id.locationsRecyclerViewCustomer);
         progressBar = findViewById(R.id.progressBarLocationsCustomer);
         noLocationsFoundImageView = findViewById(R.id.noLocationsFoundImageView);
+        welcomeTextView = findViewById(R.id.welcomeTextViewCustomer);
+        navHomeTextView = findViewById(R.id.navHomeTextView);
+        navViewAccountTextView = findViewById(R.id.navViewAccountTextView);
+        navContactTextView = findViewById(R.id.navContactTextView);
+        navLogoutTextView = findViewById(R.id.navLogoutTextView);
+
+        drawerLayout.setViewScale(Gravity.START, 0.9f);
+        drawerLayout.setRadius(Gravity.START, 35f);
+        drawerLayout.setViewElevation(Gravity.START, 20f);
+
         locationsArrayList = new ArrayList<>();
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -99,23 +110,9 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
-//        systemLocationsLinearLayout = findViewById(R.id.systemLocationsLinearLayoutCustomer);
-//        viewAccountLinearLayout = findViewById(R.id.viewAccountLinearLayout);
-        welcomeTextView = findViewById(R.id.welcomeTextViewCustomer);
     }
 
     private void setOnClickListeners() {
-        /*systemLocationsLinearLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePageCustomerActivity.this, LocationsCustomerActivity.class);
-            startActivity(intent);
-        });
-
-        viewAccountLinearLayout.setOnClickListener(v -> {
-            Intent intent2 = new Intent(HomePageCustomerActivity.this, AccountActivityCustomer.class);
-            startActivity(intent2);
-        });*/
-
         btnNav.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
         btnInfo.setOnClickListener(v -> {
@@ -131,6 +128,28 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
 
             deleteDialog.show();
         });
+
+        navHomeTextView.setOnClickListener(v -> drawerLayout.closeDrawer(GravityCompat.START));
+
+        navViewAccountTextView.setOnClickListener(v -> {
+            Intent intent3 = new Intent(HomePageCustomerActivity.this, AccountActivityCustomer.class);
+            startActivity(intent3);
+        });
+
+        navContactTextView.setOnClickListener(v -> {
+        });
+
+        navLogoutTextView.setOnClickListener(v -> new AlertDialog.Builder(HomePageCustomerActivity.this)
+                .setTitle("LOG OUT")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("YES", (dialog, which) -> {
+                    SharedPrefManager.getInstance(getApplicationContext()).setKeepMeSignedIn(false);
+                    Intent intent4 = new Intent(HomePageCustomerActivity.this, RegisterOrSignInActivity.class);
+                    startActivity(intent4);
+                    finish();
+                })
+                .setNegativeButton("NO", null)
+                .show());
     }
 
     @Override
@@ -260,9 +279,6 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
         locationsRecyclerViewCustomer.setLayoutManager(linearLayoutManager);
         locationsRecyclerViewCustomer.setItemAnimator(new DefaultItemAnimator());
         locationsRecyclerViewCustomer.setAdapter(adapter);
-        /*DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
-        decoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider)));
-        locationsRecyclerViewCustomer.addItemDecoration(decoration);*/
     }
 
     @Override

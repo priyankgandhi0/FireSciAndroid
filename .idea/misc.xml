@@ -113,7 +113,9 @@
         <entry key="app/src/main/res/drawable/chevron_right_icon.xml" value="0.15925925925925927" />
         <entry key="app/src/main/res/drawable/delete_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/divider.xml" value="0.15925925925925927" />
+        <entry key="app/src/main/res/drawable/drawer_right_side_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edit_icon.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/fire_icon.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/drawable/help_icon.xml" value="0.14444444444444443" />
@@ -128,10 +130,10 @@
         <entry key="app/src/main/res/drawable/white_round_back_with_inset.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_account_created.xml" value="0.334716796875" />
-        <entry key="app/src/main/res/layout/activity_account_customer.xml" value="0.3882095336914063" />
-        <entry key="app/src/main/res/layout/activity_account_installer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account_customer.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_account_installer.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_add_new_location.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/activity_add_new_location_installer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_new_location_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_add_new_system.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_new_system_chose_device.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_add_new_system_customer.xml" value="0.1" />
@@ -155,7 +157,7 @@
         <entry key="app/src/main/res/layout/activity_email_address.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.1483539974348012" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_homepage_customer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_homepage_customer.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_homepage_installer.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/activity_installer_or_customer.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_locations_customer.xml" value="0.22" />

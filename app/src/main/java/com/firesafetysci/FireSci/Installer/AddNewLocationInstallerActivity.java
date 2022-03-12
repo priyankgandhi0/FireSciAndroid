@@ -1,23 +1,23 @@
 package com.firesafetysci.FireSci.Installer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.hbb20.CountryCodePicker;
 
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AddNewLocationInstallerActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText companyNameEditText, cityEditText, stateOrProvinceEditText, addressEditText,
             zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText, customerFireSciPin2EditText,
             customerFireSciPin3EditText;
@@ -43,13 +43,6 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar addNewLocationActivityToolbar = findViewById(R.id.addNewLocationActivityToolbar);
-        addNewLocationActivityToolbar.setTitle("");
-        setSupportActionBar(addNewLocationActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
     }
 
     @Override
@@ -59,6 +52,7 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         companyNameEditText = findViewById(R.id.companyEditTextAddNewLocation);
         cityEditText = findViewById(R.id.cityEditTextAddNewLocation);
         stateOrProvinceEditText = findViewById(R.id.stateEditTextAddNewLocation);
@@ -106,6 +100,8 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
                 addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {

@@ -28,9 +28,9 @@ public class SystemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         TextView systemNameTextView;
         ImageView systemTypeImageView;
         private final ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
-        private final TextView detailsTextView;
-        private final TextView editTextView;
-        private final TextView deleteTextView;
+        private final ViewGroup detailsTextView;
+        private final ViewGroup editTextView;
+        private final ViewGroup deleteTextView;
         private final SwipeRevealLayout swipeRevealLayout;
 
         public ViewHolder(View itemView, OnSystemClickListener clickListener) {

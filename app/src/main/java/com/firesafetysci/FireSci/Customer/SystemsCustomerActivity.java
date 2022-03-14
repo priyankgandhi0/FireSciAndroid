@@ -1,12 +1,13 @@
 package com.firesafetysci.FireSci.Customer;
 
-import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
-
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,17 +15,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
-import com.firesafetysci.FireSci.Installer.SystemsInstallerActivity;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.Main.Location;
 import com.firesafetysci.FireSci.Main.RequestHandler;
@@ -32,6 +29,8 @@ import com.firesafetysci.FireSci.Main.System;
 import com.firesafetysci.FireSci.Main.SystemAdapter;
 import com.firesafetysci.FireSci.Main.SystemDetailsActivity;
 import com.firesafetysci.FireSci.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
@@ -45,23 +44,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 public class SystemsCustomerActivity extends AppCompatActivity
         implements SystemAdapter.OnEditButtonPressedListener, SystemAdapter.OnDeleteButtonPressedListener, SystemAdapter.OnSystemClickListener {
+    public static Location location;
+    String companyNameGlobal, cityGlobal, stateGlobal, addressGlobal, zipcodeGlobal, locationDescriptionGlobal,
+            customerFiresciPinGlobal, selectedCountrySelectedCountryLabelEdit;
+    private ImageButton btnBack;
     private RecyclerView systemsRecyclerViewCustomer;
-    private ImageButton addSystemImageButton;
+    private FloatingActionButton addSystemImageButton;
     private ImageView noSystemsFoundImageView;
     private LinearLayout progressBar;
     private ArrayList<System> systemsArrayList;
     private TextView companyNameTextView, dateTextView, locationDescriptionTextView, addressTextView;
-
     private int locationId;
-    String companyNameGlobal, cityGlobal, stateGlobal, addressGlobal, zipcodeGlobal, locationDescriptionGlobal,
-            customerFiresciPinGlobal, selectedCountrySelectedCountryLabelEdit;
-
-    public static Location location;
-
     private SystemAdapter adapter;
 
     @Override
@@ -71,12 +67,6 @@ public class SystemsCustomerActivity extends AppCompatActivity
 
         initViews();
         setOnClickListeners();
-
-        Toolbar systemsActivityToolbar = findViewById(R.id.systemsActivityCustomerToolbar);
-        systemsActivityToolbar.setTitle("");
-        setSupportActionBar(systemsActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setDefaultValues();
     }
@@ -105,6 +95,7 @@ public class SystemsCustomerActivity extends AppCompatActivity
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         systemsRecyclerViewCustomer = findViewById(R.id.systemsRecyclerViewCustomer);
         addSystemImageButton = findViewById(R.id.addSystemImageButtonCustomer);
         noSystemsFoundImageView = findViewById(R.id.noSystemsFoundImageView);
@@ -119,10 +110,48 @@ public class SystemsCustomerActivity extends AppCompatActivity
 
     private void setOnClickListeners() {
         addSystemImageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(SystemsCustomerActivity.this, AddSystemSerNoCustomerActivity.class);
-            startActivity(intent);
-            AddSystemSerNoCustomerActivity.location = location;
+//            Intent intent = new Intent(SystemsCustomerActivity.this, AddSystemSerNoCustomerActivity.class);
+//            startActivity(intent);
+//            AddSystemSerNoCustomerActivity.location = location;
+
+            LayoutInflater factory = LayoutInflater.from(this);
+            final View dialogView = factory.inflate(R.layout.add_system_dialog_layout, null);
+            final AlertDialog dialog = new AlertDialog.Builder(this).create();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setView(dialogView);
+            EditText serialNumberEditText = dialogView.findViewById(R.id.serialNumberEditTextAddSysCus);
+            TextView serNoNotRecognizedTextView = dialogView.findViewById(R.id.serialNumberNotRecognizedTextView);
+            MaterialButton continueButton = dialogView.findViewById(R.id.continueButtonAddSysCus);
+            dialogView.findViewById(R.id.btn_dialog).setOnClickListener(v1 -> dialog.dismiss());
+            continueButton.setOnClickListener(v2 -> {
+                String serialNumber = serialNumberEditText.getText().toString().trim();
+
+                if (serialNumber.isEmpty()) {
+                    Snackbar.make(continueButton, "Please enter the Serial Number and try again!", 1250)
+                            .setAction("Action", null)
+                            .setActionTextColor(Color.WHITE)
+                            .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                            .show();
+
+                } else if (!CommonFunctions.isNetworkConnected(this)) {
+                    Snackbar.make(continueButton, "Please connect to the internet!", 1250)
+                            .setAction("Action", null)
+                            .setActionTextColor(Color.WHITE)
+                            .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                            .show();
+
+                } else {
+                    serNoNotRecognizedTextView.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.VISIBLE);
+                    serialNumberEditText.clearFocus();
+                    checkSerialNumberPinInDatabase(serialNumber, serNoNotRecognizedTextView);
+                }
+            });
+
+            dialog.show();
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void setDefaultValues() {
@@ -146,7 +175,11 @@ public class SystemsCustomerActivity extends AppCompatActivity
             selectedCountrySelectedCountryLabelEdit = location.getCountry();
         }
 
-        locationDescriptionTextView.setText(locationDescriptionGlobal);
+        locationDescriptionTextView.setVisibility(View.GONE);
+        if (locationDescriptionGlobal != null && !locationDescriptionGlobal.isEmpty()) {
+            locationDescriptionTextView.setVisibility(View.VISIBLE);
+            locationDescriptionTextView.setText(locationDescriptionGlobal);
+        }
         String fullAddress = String.format("%s, %s (%s)", addressGlobal, cityGlobal, zipcodeGlobal);
         addressTextView.setText(fullAddress);
     }
@@ -228,9 +261,68 @@ public class SystemsCustomerActivity extends AppCompatActivity
         systemsRecyclerViewCustomer.setLayoutManager(linearLayoutManager);
         systemsRecyclerViewCustomer.setItemAnimator(new DefaultItemAnimator());
         systemsRecyclerViewCustomer.setAdapter(adapter);
-        DividerItemDecoration decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
-        decoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider)));
-        systemsRecyclerViewCustomer.addItemDecoration(decoration);
+    }
+
+    private void checkSerialNumberPinInDatabase(String serialNumber, TextView serNoNotRecognizedTextView) {
+        String URL = "http://firesafetysci.com/android_app/api/check_system_serial_number.php?serial_number="
+                + serialNumber;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET, URL,
+                result -> {
+                    progressBar.setVisibility(View.GONE);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        String response = jsonObject.getString("response");
+                        String doesSystemExist = jsonObject.getString("exists");
+
+                        if (response.equals("found")) {
+                            if (doesSystemExist.equals("yes")) {
+                                Snackbar.make(findViewById(R.id.continueButtonAddSysCus), "System Already exists!", 1250)
+                                        .setAction("Action", null)
+                                        .setActionTextColor(Color.WHITE)
+                                        .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                                        .show();
+                            } else {
+                                Intent intent = new Intent(this, AddSystemSelDeviceTypeCusActivity.class);
+                                startActivityForResult(intent, 0);
+                                AddSystemSelDeviceTypeCusActivity.location = location;
+                                AddSystemSelDeviceTypeCusActivity.enteredSerialNumber = serialNumber;
+                            }
+
+                        } else {
+                            serNoNotRecognizedTextView.setVisibility(View.VISIBLE);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                    progressBar.setVisibility(View.GONE);
+                    Snackbar.make(findViewById(R.id.continueButtonAddSysCus), "Failed! Please try again!!!", 1250)
+                            .setAction("Action", null)
+                            .setActionTextColor(Color.WHITE)
+                            .setBackgroundTint(getResources().getColor(R.color.snackbarColor))
+                            .show();
+
+                    error.printStackTrace();
+                }
+        ) {
+            @Override
+            public Map<String, String> getParams() {
+                return new HashMap<>();
+            }
+
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     @Override
@@ -279,5 +371,13 @@ public class SystemsCustomerActivity extends AppCompatActivity
         Intent intent = new Intent(SystemsCustomerActivity.this, SystemDetailsActivity.class);
         startActivity(intent);
         SystemDetailsActivity.system = systemsArrayList.get(position);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 0) {
+
+        }
     }
 }

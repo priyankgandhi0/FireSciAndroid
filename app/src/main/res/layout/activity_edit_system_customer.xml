@@ -4,61 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".Customer.EditSystemCustomerActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <View
+        android:id="@+id/viewTopBar"
         android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/edit_system"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/editSystemCustomerActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Edit System"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/viewTopBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -66,28 +72,26 @@
                     android:id="@+id/deviceNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Device Name *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/device_name_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/deviceNameEditTextEditCus"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="eg. Server Room Device"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/eg_server_room_device"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hintColor" />
 
             </LinearLayout>
 
@@ -95,12 +99,9 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -108,41 +109,33 @@
                     android:id="@+id/roomTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Room"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/room"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/roomEditTextEditCus"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Server Room"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/server_room"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textColorHint="@color/hintColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -150,40 +143,34 @@
                     android:id="@+id/buildingTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Building"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/building"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/buildingEditTextEditCus"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center|start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Building Name"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/building_name"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textColorHint="@color/hintColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
@@ -191,40 +178,34 @@
                     android:id="@+id/floorTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Floor"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/floor"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/floorEditTextEditCus"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center|start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="eg. Ground Floor"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/eg_ground_floor"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textColorHint="@color/hintColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -232,42 +213,35 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Location Description *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/location_description_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/descriptionEditTextEditCus"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Description"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/description"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textColorHint="@color/hintColor" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/productInstalledTextView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="Product Installed"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/product_installed"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
@@ -275,42 +249,34 @@
                 android:id="@+id/recyclerViewEditSystemCustomer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:focusable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productInstalledTextView" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveChangesButtonEditSystemCustomer"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:focusable="false"
-                android:fontFamily="sans-serif-black"
-                android:text="Save Changes"
-                android:textAllCaps="false"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/save_changes"
                 android:textColor="@color/white"
-                android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8dp"
+                app:cornerRadius="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewEditSystemCustomer" />
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewEditSystemCustomer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarEditSystemCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:background="@drawable/progress_bar_back"
         android:padding="8dp"
         android:visibility="gone"

@@ -117,16 +117,15 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
 
         btnInfo.setOnClickListener(v -> {
             LayoutInflater factory = LayoutInflater.from(this);
-            final View deleteDialogView = factory.inflate(R.layout.info_dialog_layout, null);
-            final AlertDialog deleteDialog = new AlertDialog.Builder(this).create();
-            deleteDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            deleteDialog.setView(deleteDialogView);
-            deleteDialogView.findViewById(R.id.btn_dialog).setOnClickListener(v1 -> {
-                //your business logic
-                deleteDialog.dismiss();
+            final View dialogView = factory.inflate(R.layout.info_dialog_layout, null);
+            final AlertDialog dialog = new AlertDialog.Builder(this).create();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setView(dialogView);
+            dialogView.findViewById(R.id.btn_dialog).setOnClickListener(v1 -> {
+                dialog.dismiss();
             });
 
-            deleteDialog.show();
+            dialog.show();
         });
 
         navHomeTextView.setOnClickListener(v -> drawerLayout.closeDrawer(GravityCompat.START));

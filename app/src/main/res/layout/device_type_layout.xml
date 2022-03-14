@@ -3,31 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/deviceTypeConstraintLayout"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/edit_text_background">
 
     <ImageView
         android:id="@+id/deviceTypeImageView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginVertical="20dp"
+        android:layout_marginStart="15dp"
+        android:contentDescription="@string/no_description"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chevronRightImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/direct_fire_suppression" />
 
     <ImageView
         android:id="@+id/chevronRightImageView"
-        android:layout_width="70dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/no_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/chevron_right_icon" />
+        app:srcCompat="@drawable/ic_unchecked" />
+
+    <View
+        android:id="@+id/viewBg"
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        android:background="@drawable/system_row_red_bg"
+        app:layout_constraintBottom_toBottomOf="@id/deviceTypeImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/deviceTypeImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

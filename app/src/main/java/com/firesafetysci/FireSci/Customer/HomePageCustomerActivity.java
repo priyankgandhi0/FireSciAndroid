@@ -26,7 +26,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.AccountRegistration.RegisterOrSignInActivity;
+import com.firesafetysci.FireSci.Installer.HomePageInstallerActivity;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
+import com.firesafetysci.FireSci.Main.ContactActivity;
 import com.firesafetysci.FireSci.Main.Location;
 import com.firesafetysci.FireSci.Main.LocationAdapter;
 import com.firesafetysci.FireSci.Main.RequestHandler;
@@ -136,6 +138,8 @@ public class HomePageCustomerActivity extends AppCompatActivity implements Navig
         });
 
         navContactTextView.setOnClickListener(v -> {
+            Intent intent4 = new Intent(HomePageCustomerActivity.this, ContactActivity.class);
+            startActivity(intent4);
         });
 
         navLogoutTextView.setOnClickListener(v -> new AlertDialog.Builder(HomePageCustomerActivity.this)

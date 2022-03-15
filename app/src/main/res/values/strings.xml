@@ -131,4 +131,19 @@
     <string name="choose_your_firesci_device">Choose your FireSci Device</string>
     <string name="add_new_system_detail">Enter the information that corresponds to device. Include as much information as possible to specify device.</string>
     <string name="location_description">Location Description</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="enter_old_password">Enter Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="enter_new_password_again">Enter New Password again</string>
+    <string name="password_must_contain_a_minimum_of_1_lowercase_letter_a_z_a_minimum_of_one_uppercase_letter_a_z_minimum_of_1_numeric_character_0_9_and_a_length_of_8_25_characters">Password must contain: a minimum of 1 lowercase letter [a-z], a minimum of one uppercase letter [A-Z], minimum of 1 numeric character [0-9], and a length of 8-25 characters.</string>
+    <string name="old_password_is_incorrect">Old Password is incorrect.</string>
+    <string name="edit_location">Edit Location</string>
+    <string name="add_system">Add System</string>
+    <string name="help">Help</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="privacy">Privacy</string>
+    <string name="terms_of_service">Terms of Service</string>
 </resources>

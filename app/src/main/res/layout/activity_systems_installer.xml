@@ -4,38 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".Installer.SystemsInstallerActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <View
+        android:id="@+id/viewTopBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/companyTextViewSystemsInstaller"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintWidth_max="200dp"
+        tools:text="@tools:sample/lorem/random" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/systemsActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
+    <ImageButton
+        android:id="@+id/editLocationImageButtonInstaller"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/no_description"
+        app:layout_constraintBottom_toBottomOf="@id/companyTextViewSystemsInstaller"
+        app:layout_constraintEnd_toStartOf="@id/deleteLocationButtonInstaller"
+        app:layout_constraintTop_toTopOf="@id/companyTextViewSystemsInstaller"
+        app:srcCompat="@drawable/ic_edit"
+        app:tint="@color/black" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="My FireSci Systems"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+    <ImageButton
+        android:id="@+id/deleteLocationButtonInstaller"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/no_description"
+        app:layout_constraintBottom_toBottomOf="@id/companyTextViewSystemsInstaller"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/companyTextViewSystemsInstaller"
+        app:srcCompat="@drawable/ic_delete"
+        app:tint="@color/black" />
 
     <ScrollView
         android:id="@+id/scrollView4"
@@ -45,110 +82,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintTop_toBottomOf="@id/viewTopBar"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageButton
-                android:id="@+id/editLocationImageButtonInstaller"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/blue_round_back"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="@+id/companyTextViewSystemsInstaller"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/companyTextViewSystemsInstaller"
-                app:srcCompat="@drawable/edit_icon"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/companyTextViewSystemsInstaller"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="Chip Soul Technology PVT Ltd"
-                android:textColor="@color/blue"
-                android:textSize="22sp"
-                app:layout_constraintEnd_toStartOf="@+id/addSystemImageButtonInstaller"
-                app:layout_constraintStart_toEndOf="@+id/editLocationImageButtonInstaller"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/addSystemImageButtonInstaller"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="@+id/companyTextViewSystemsInstaller"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/companyTextViewSystemsInstaller"
-                app:srcCompat="@drawable/add_icon"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <ImageButton
-                android:id="@+id/deleteLocationButtonInstaller"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="@+id/dateTextViewInstaller"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/dateTextViewInstaller"
-                app:srcCompat="@drawable/delete_icon"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/dateTextViewInstaller"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="Sat, Sep 11"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/companyTextViewSystemsInstaller"
-                app:layout_constraintStart_toStartOf="@+id/companyTextViewSystemsInstaller"
-                app:layout_constraintTop_toBottomOf="@+id/companyTextViewSystemsInstaller" />
-
-            <TextView
-                android:id="@+id/locationDescriptionTextViewInstaller"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:gravity="start"
-                android:text="Location Description:"
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dateTextViewInstaller" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/addressTextViewInstaller"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:gravity="start"
-                android:text="Address:"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/locationDescriptionTextViewInstaller" />
+                <TextView
+                    android:id="@+id/dateTextViewInstaller"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/black"
+                    app:drawableStartCompat="@drawable/ic_calendar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Sat, Sep 11" />
+
+                <TextView
+                    android:id="@+id/locationDescriptionTextViewInstaller"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    app:drawableStartCompat="@drawable/ic_description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateTextViewInstaller"
+                    tools:text="Location Description:" />
+
+                <TextView
+                    android:id="@+id/addressTextViewInstaller"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawablePadding="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    app:drawableStartCompat="@drawable/ic_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/locationDescriptionTextViewInstaller"
+                    tools:text="Address:" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/systemsRecyclerViewInstaller"
@@ -158,10 +150,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addressTextViewInstaller" />
-
+                app:layout_constraintTop_toBottomOf="@+id/layHeader" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addSystemImageButtonInstaller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/no_description"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
 
     <ImageView
         android:id="@+id/noSystemsFoundImageView"
@@ -169,6 +172,7 @@
         android:layout_height="120dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:contentDescription="@string/no_description"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView4"
         app:layout_constraintEnd_toEndOf="parent"

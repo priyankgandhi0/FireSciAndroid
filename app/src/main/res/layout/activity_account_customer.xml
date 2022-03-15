@@ -326,7 +326,7 @@
                 android:background="@drawable/edit_text_background"
                 android:fontFamily="@font/poppins_medium"
                 android:padding="15dp"
-                android:text="@string/change_your_password"
+                android:text="@string/change_password"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

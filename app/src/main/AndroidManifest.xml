@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".Main.ContactActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".Main.SystemDetailsActivity"
             android:exported="true"
             android:screenOrientation="portrait"

@@ -298,7 +298,7 @@
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
                     android:importantForAutofill="no"
-                    android:inputType="textCapWords"
+                    android:inputType="textCapSentences"
                     android:paddingHorizontal="15dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor" />

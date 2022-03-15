@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -24,9 +24,9 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.Main.DeviceTypeAdapter;
+import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.System;
 import com.firesafetysci.FireSci.R;
-import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -40,14 +40,13 @@ import java.util.Objects;
 
 public class EditSystemInstallerActivity extends AppCompatActivity implements DeviceTypeAdapter.OnDeviceTypeClickListener {
     public static System systemToEdit;
-
+    DividerItemDecoration decoration;
+    private ImageButton btnBack;
     private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private RecyclerView deviceTypeRecyclerView;
     private Button saveChangesButton;
-
     private String selectedDeviceType = "";
     private ArrayList<String> deviceTypeArrayList;
-    DividerItemDecoration decoration;
     private LinearLayout progressBar;
 
     @Override
@@ -57,12 +56,6 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
 
         initViews();
         setOnClickListeners();
-
-        Toolbar editSystemInstallerActivityToolbar = findViewById(R.id.editSystemInstallerActivityToolbar);
-        editSystemInstallerActivityToolbar.setTitle("");
-        setSupportActionBar(editSystemInstallerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setDefaultValues();
 
@@ -79,6 +72,7 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceNameEditText = findViewById(R.id.deviceNameEditTextEdit);
         roomEditText = findViewById(R.id.roomEditTextEdit);
         buildingEditText = findViewById(R.id.buildingEditTextEdit);
@@ -141,6 +135,8 @@ public class EditSystemInstallerActivity extends AppCompatActivity implements De
                 editSystemInDatabase(systemToEdit.getSystemSerialNumber(), selectedDeviceType, deviceName, room, building, floor, description);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void editSystemInDatabase(String systemSerialNumber, String selectedDeviceType, String deviceName, String room, String building, String floor, String description) {

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     public static String enteredSerialNumber;
     public static String selectedDeviceType;
 
+    private ImageButton btnBack;
     private Button addSystemButton;
     private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private LinearLayout progressBar;
@@ -55,12 +57,6 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar addNewSystemInstallerActivityToolbar = findViewById(R.id.addNewSystemInstallerActivityToolbar);
-        addNewSystemInstallerActivityToolbar.setTitle("");
-        setSupportActionBar(addNewSystemInstallerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 
@@ -71,6 +67,7 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceNameEditText = findViewById(R.id.deviceNameEditText);
         roomEditText = findViewById(R.id.roomEditText);
         buildingEditText = findViewById(R.id.buildingEditText);
@@ -108,6 +105,8 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
                 addSystemInDatabase(enteredSerialNumber, selectedDeviceType, location.getId(), deviceName, room, building, floor, description);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void addSystemInDatabase(String enteredSerialNumber, String selectedDeviceType, int locationId, String deviceName, String room, String building, String floor, String description) {

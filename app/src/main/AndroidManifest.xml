@@ -34,6 +34,7 @@
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AddSystemSelDeviceTypeCusActivity"
@@ -55,6 +56,7 @@
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.SystemsCustomerActivity"
@@ -74,12 +76,14 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.AccountActivityCustomer"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Customer.HomePageCustomerActivity"
@@ -93,6 +97,7 @@
             android:parentActivityName=".Installer.AccountActivityInstaller"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AccountActivityInstaller"
@@ -100,6 +105,7 @@
             android:parentActivityName=".Installer.HomePageInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.EditLocationInstallerActivity"
@@ -107,6 +113,7 @@
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.LocationsInstallerActivity"
@@ -126,6 +133,7 @@
             android:parentActivityName=".Installer.SystemsInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddNewSystemInstallerActivity"
@@ -133,6 +141,7 @@
             android:parentActivityName=".Installer.AddSystemSelDeviceTypeInsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Installer.AddSystemSelDeviceTypeInsActivity"
@@ -160,6 +169,7 @@
             android:parentActivityName=".Installer.HomePageInstallerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationDidntGetEmailActivity"
@@ -180,6 +190,7 @@
             android:parentActivityName=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationEmailAddressActivity"
@@ -187,6 +198,7 @@
             android:parentActivityName=".AccountRegistration.AccountRegistrationPhoneNumberActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationCreatePasswordActivity"
@@ -194,6 +206,7 @@
             android:parentActivityName=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationCompanyDetailsActivity"
@@ -201,12 +214,14 @@
             android:parentActivityName=".AccountRegistration.AccountRegistrationChooseCountryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.AccountRegistrationChooseCountryActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.NewPasswordActivity"
@@ -227,6 +242,7 @@
             android:parentActivityName=".AccountRegistration.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.RegisterActivity"
@@ -234,6 +250,7 @@
             android:parentActivityName=".AccountRegistration.RegisterOrSignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.ForgotPasswordActivity"
@@ -241,12 +258,14 @@
             android:parentActivityName=".Main.SignInActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".Main.SignInActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AccountRegistration.RegisterOrSignInActivity"

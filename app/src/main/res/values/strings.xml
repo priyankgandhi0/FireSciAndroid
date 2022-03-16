@@ -27,7 +27,7 @@
     <string name="firesci_access_code_or_e_mail">FireSci Access Code or E-mail</string>
     <string name="password">Password</string>
     <string name="enter_password">Enter Password</string>
-    <string name="keep_me_signed_in">keep Me Signed In</string>
+    <string name="keep_me_signed_in">Keep Me Signed In</string>
     <string name="enter_email_address">Enter Email address</string>
     <string name="which_country_do_you_live_in">Which Country Do You Live In?</string>
     <string name="select_your_country">Select Your Country</string>
@@ -146,4 +146,6 @@
     <string name="contact_support">Contact Support</string>
     <string name="privacy">Privacy</string>
     <string name="terms_of_service">Terms of Service</string>
+    <string name="forgot_password_detail">Enter the email address associated. with your account.</string>
+    <string name="enter_your_e_mail_address_below">Enter your E-mail address below.</string>
 </resources>

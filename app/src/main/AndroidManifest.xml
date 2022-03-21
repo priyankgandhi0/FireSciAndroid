@@ -253,6 +253,22 @@
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
+            android:name=".AccountRegistration.ForgotPasswordNewPasswordActivity"
+            android:exported="true"
+            android:parentActivityName=".AccountRegistration.ForgotPasswordVerificationCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".AccountRegistration.ForgotPasswordVerificationCodeActivity"
+            android:exported="true"
+            android:parentActivityName=".AccountRegistration.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeNoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".AccountRegistration.ForgotPasswordActivity"
             android:exported="true"
             android:parentActivityName=".Main.SignInActivity"

@@ -156,7 +156,7 @@
         <entry key="app/src/main/res/layout/activity_company_details.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_contact.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_create_password.xml" value="0.14647530603630224" />
-        <entry key="app/src/main/res/layout/activity_didnt_get_email.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_didnt_get_email.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_edit_location_installer.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_edit_location_system.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_edit_system.xml" value="0.14647530603630224" />
@@ -164,6 +164,8 @@
         <entry key="app/src/main/res/layout/activity_email_address.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.1483539974348012" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_forgot_password_new_password.xml" value="0.1483539974348012" />
+        <entry key="app/src/main/res/layout/activity_forgot_password_verification_code.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_homepage_customer.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_homepage_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_installer_or_customer.xml" value="0.3098958333333333" />
@@ -172,7 +174,7 @@
         <entry key="app/src/main/res/layout/activity_my_fire_sci_system.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_my_fire_sci_system_location.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_name.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_new_password.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/layout/activity_new_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_phone_number.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_register_or_sign_in.xml" value="0.12314814814814815" />

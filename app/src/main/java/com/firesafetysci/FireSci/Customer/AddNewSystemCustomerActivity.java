@@ -71,7 +71,7 @@ public class AddNewSystemCustomerActivity extends AppCompatActivity {
             String floor = floorEditText.getText().toString().trim();
             String description = descriptionEditText.getText().toString().trim();
 
-            if (deviceName.isEmpty() || description.isEmpty()) {
+            if (deviceName.isEmpty()) {
                 Snackbar.make(findViewById(R.id.addSystemButtonAddSysCus), "Please enter the required fields and try again!\"", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)

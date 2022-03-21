@@ -80,7 +80,7 @@ public class AddNewLocationInstallerActivity extends AppCompatActivity {
             String customerFireSciPin3 = customerFireSciPin3EditText.getText().toString().trim();
 
             if (companyName.isEmpty() || city.isEmpty() || state.isEmpty() || address.isEmpty() ||
-                    zipCode.isEmpty() || locationDescription.isEmpty()) {
+                    zipCode.isEmpty()) {
                 Snackbar.make(findViewById(R.id.continueButtonAddNewLocation), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)

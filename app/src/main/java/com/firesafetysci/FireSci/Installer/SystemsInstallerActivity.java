@@ -57,7 +57,7 @@ public class SystemsInstallerActivity extends AppCompatActivity
     private ImageView noSystemsFoundImageView;
     private LinearLayout progressBar;
     private ArrayList<System> systemsArrayList;
-    private TextView companyNameTextView, dateTextView, locationDescriptionTextView, addressTextView;
+    private TextView companyNameTextView, dateTextView, addressTextView;
     private int locationId;
     private SystemAdapter adapter;
 
@@ -106,7 +106,6 @@ public class SystemsInstallerActivity extends AppCompatActivity
         companyNameTextView = findViewById(R.id.companyTextViewSystemsInstaller);
         dateTextView = findViewById(R.id.dateTextViewInstaller);
         systemsArrayList = new ArrayList<>();
-        locationDescriptionTextView = findViewById(R.id.locationDescriptionTextViewInstaller);
         addressTextView = findViewById(R.id.addressTextViewInstaller);
     }
 
@@ -190,7 +189,6 @@ public class SystemsInstallerActivity extends AppCompatActivity
             selectedCountrySelectedCountryLabelEdit = location.getCountry();
         }
 
-        locationDescriptionTextView.setText(locationDescriptionGlobal);
         String fullAddress = String.format("%s, %s (%s)", addressGlobal, cityGlobal, zipcodeGlobal);
         addressTextView.setText(fullAddress);
     }

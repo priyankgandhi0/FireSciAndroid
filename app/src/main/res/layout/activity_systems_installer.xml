@@ -118,6 +118,7 @@
                     android:drawablePadding="15dp"
                     android:fontFamily="@font/poppins"
                     android:textColor="@color/black"
+                    android:visibility="gone"
                     app:drawableStartCompat="@drawable/ic_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

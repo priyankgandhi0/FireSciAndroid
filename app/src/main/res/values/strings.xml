@@ -63,9 +63,9 @@
     <string name="e_mails_do_not_match">E-mails do not match.</string>
     <string name="please_enter_a_valid_e_mail_address">Please enter a valid E-mail address.</string>
     <string name="verify_your_e_mail">Verify Your E-mail</string>
-    <string name="account_created_check_e_mail">Account created! Please check your e-mail to verify account.</string>
+    <string name="account_created_check_e_mail">Account created! Please check your e-mail to verify your account.</string>
     <string name="email_sent_in_detail">We sent you an email to the proposed email address. To activate your account, please click on the link in the e-mail and press continue.</string>
-    <string name="check_in_spam_folder">If the e-mail was sent to your folder, move it to your primary inbox first, then proceed with the steps above.</string>
+    <string name="check_in_spam_folder">If the e-mail was sent to your spam folder, move it to your primary inbox first, then proceed with the steps above.</string>
     <string name="email_sent">Email Sent!</string>
     <string name="click_on_the_link_in_email_and">Click on the link in email and</string>
     <string name="try_again">Try Again!</string>
@@ -124,7 +124,7 @@
     <string name="eg_main_building">Eg. Main Building</string>
     <string name="server_room">Server Room</string>
     <string name="building_name">Building Name</string>
-    <string name="eg_1st_floor">eg. 1st Floor</string>
+    <string name="eg_1st_floor">Eg. 1st Floor</string>
     <string name="product_installed">Product Installed</string>
     <string name="add_a_new_system">Add a New System</string>
     <string name="enter_the_five_digit_serial_number">Enter the five digit Serial number.</string>

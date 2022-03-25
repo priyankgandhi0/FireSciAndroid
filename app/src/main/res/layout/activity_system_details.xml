@@ -201,8 +201,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/serialNumberTextView"
                 app:layout_constraintStart_toStartOf="@id/serialNumberTitle"
                 app:layout_constraintTop_toBottomOf="@id/floorTitle"
@@ -216,6 +218,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="@string/description"
                 android:textColor="@color/black"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/serialNumberTitle"
                 app:layout_constraintTop_toBottomOf="@id/floorTextView" />
 
@@ -227,6 +230,7 @@
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/black"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/serialNumberTextView"
                 app:layout_constraintStart_toStartOf="@id/serialNumberTitle"

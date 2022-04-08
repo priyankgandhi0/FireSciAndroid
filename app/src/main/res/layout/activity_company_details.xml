@@ -247,7 +247,7 @@
                         android:imeActionLabel="Done"
                         android:imeOptions="actionDone"
                         android:importantForAutofill="no"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:paddingHorizontal="20dp"
                         android:singleLine="true"
                         android:textColor="@color/black"

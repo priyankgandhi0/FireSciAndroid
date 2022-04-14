@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +30,7 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
     public static Location location;
     public static String enteredSerialNumber;
 
+    private ImageButton btnBack;
     private RecyclerView deviceTypeRecyclerView;
     private Button continueButton;
 
@@ -44,12 +46,6 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
         initViews();
         setOnClickListeners();
 
-        Toolbar addSystemDevTypeInstallerActivityToolbar = findViewById(R.id.addSystemDevTypeInstallerActivityToolbar);
-        addSystemDevTypeInstallerActivityToolbar.setTitle("");
-        setSupportActionBar(addSystemDevTypeInstallerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         //Set initially none selected
         deviceTypeArrayList = new ArrayList<>();
         deviceTypeArrayList.add("dar");
@@ -64,6 +60,7 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceTypeRecyclerView = findViewById(R.id.recyclerViewAddSysSelDevInstaller);
         continueButton = findViewById(R.id.continueButtonAddSysSelDevIns);
 
@@ -107,6 +104,8 @@ public class AddSystemSelDeviceTypeInsActivity extends AppCompatActivity impleme
                 AddNewSystemInstallerActivity.selectedDeviceType = selectedDeviceType;
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     @Override

@@ -6,22 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.AccountRegistration.RegisterOrSignInActivity;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
 import com.firesafetysci.FireSci.Main.SharedPrefManager;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
@@ -29,15 +29,14 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AccountActivityInstaller extends AppCompatActivity {
+    String firstNameGlobal = "", lastNameGlobal = "", companyNameGlobal = "", emailGlobal = "", phoneNumberGlobal = "";
+    private ImageButton btnBack;
     private EditText nameEditText, lastNameEditText, companyNameEditText, emailEditText, phoneNumberEditText;
     private Button saveChangesButton;
     private LinearLayout progressBar;
     private TextView changeYourPasswordTextView, logoutTextView, pinTextView;
-
-    String firstNameGlobal = "", lastNameGlobal = "", companyNameGlobal = "", emailGlobal = "", phoneNumberGlobal = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +45,6 @@ public class AccountActivityInstaller extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar accountDetailsActivityToolbar = findViewById(R.id.accountDetailsActivityToolbar);
-        accountDetailsActivityToolbar.setTitle("");
-        setSupportActionBar(accountDetailsActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         if (!CommonFunctions.isNetworkConnected(AccountActivityInstaller.this)) {
             Snackbar.make(findViewById(R.id.saveChangesButtonAccountInstaller), "Please connect to the internet!", 1250)
@@ -73,6 +66,7 @@ public class AccountActivityInstaller extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         nameEditText = findViewById(R.id.nameEditTextAccountInstaller);
         lastNameEditText = findViewById(R.id.lastNameEditTextAccountInstaller);
         companyNameEditText = findViewById(R.id.companyNameEditTextAccountInstaller);
@@ -133,24 +127,24 @@ public class AccountActivityInstaller extends AppCompatActivity {
             startActivity(intent);
         });
 
-        logoutTextView.setOnClickListener(v -> {
-            new AlertDialog.Builder(AccountActivityInstaller.this)
-                    .setTitle("LOG OUT")
-                    .setMessage("Are you sure you want to log out?")
-                    .setPositiveButton("YES", (dialog, which) -> {
-                        SharedPrefManager.getInstance(getApplicationContext()).setKeepMeSignedIn(false);
+        logoutTextView.setOnClickListener(v -> new AlertDialog.Builder(AccountActivityInstaller.this)
+                .setTitle("LOG OUT")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("YES", (dialog, which) -> {
+                    SharedPrefManager.getInstance(getApplicationContext()).setKeepMeSignedIn(false);
 
-                        Intent intent = new Intent(AccountActivityInstaller.this, RegisterOrSignInActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
-                        finish();
-                    })
-                    .setNegativeButton("NO", null)
-                    .show();
-        });
+                    Intent intent = new Intent(AccountActivityInstaller.this, RegisterOrSignInActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
+                    finish();
+                })
+                .setNegativeButton("NO", null)
+                .show());
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     //Get user data from database
@@ -236,7 +230,7 @@ public class AccountActivityInstaller extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         String fireSciPin = SharedPrefManager.getInstance(getApplicationContext()).getFireSciPin();
-        String URL = "http://firesafetysci.com/android_app/api/edit_user_data_by_firesci_pin.php?firesci_pin=" + fireSciPin + "&first_name=" + firstName  + "&last_name=" + lastName +
+        String URL = "http://firesafetysci.com/android_app/api/edit_user_data_by_firesci_pin.php?firesci_pin=" + fireSciPin + "&first_name=" + firstName + "&last_name=" + lastName +
                 "&company_name=" + companyName + "&email=" + email + "&phone_number=" + phoneNumber;
 
         StringRequest stringRequest = new StringRequest(

@@ -4,108 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".Installer.AddNewLocationInstallerActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <View
+        android:id="@+id/viewTopBar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_height="@dimen/view_top_bar_height"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/addNewLocationActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Add New Location"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/nav_new_location"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
 
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@id/viewTopBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/locationTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#1B070707"
-                android:gravity="center|start"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="Location"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="30dp">
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/locationTextView">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/companyNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Company Name *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/company_name_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/companyEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Company Name"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_company_name"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
 
             </LinearLayout>
 
@@ -113,41 +98,37 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
                 <TextView
                     android:id="@+id/cityNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="City *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/city_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/cityEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your City"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_your_city"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -155,12 +136,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -168,37 +146,34 @@
                     android:id="@+id/stateNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="State/Province *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/state_province_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/stateEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center|start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your State/Province"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_your_state_province"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -209,81 +184,69 @@
                     android:id="@+id/countryPickerTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/country_asterisk"
+                    android:textColor="@color/black" />
 
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/countryPickerAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
+                    android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:textSize="16sp"
+                    android:paddingHorizontal="15dp"
                     app:ccpDialog_showFlag="true"
+                    app:ccp_arrowSize="20dp"
                     app:ccp_contentColor="@color/black"
                     app:ccp_defaultNameCode="US"
                     app:ccp_showFullName="true"
                     app:ccp_showNameCode="false"
                     app:ccp_showPhoneCode="false"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    app:ccp_textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                app:layout_constraintTop_toBottomOf="@id/linearLayout4">
 
                 <TextView
                     android:id="@+id/addressTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Address *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/address_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/addressEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your Address"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/enter_your_address"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
@@ -291,40 +254,36 @@
                     android:id="@+id/zipCodeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Zip Code *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/zip_code_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/zipCodeEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your Zip Code"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/enter_your_zip_code"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
@@ -332,40 +291,34 @@
                     android:id="@+id/locationDescriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Location Description *"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/location_description_asterisk"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/locationDescriptionEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Location Description"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/enter_location_description"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
@@ -373,40 +326,36 @@
                     android:id="@+id/customerFireSciPinTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer FireSci Pin 1"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/customer_firesci_pin_1"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/customerFireSciPinEditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Customer FireSci Pin 1"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_customer_firesci_pin_1"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
@@ -414,40 +363,35 @@
                     android:id="@+id/customerFireSciPin2TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer FireSci Pin 2"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/customer_firesci_pin_2"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/customerFireSciPin2EditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Customer FireSci Pin 2"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_customer_firesci_pin_2"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout10"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
 
@@ -455,54 +399,46 @@
                     android:id="@+id/customerFireSciPin3TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Customer FireSci Pin 3"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/customer_firesci_pin_3"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/customerFireSciPin3EditTextAddNewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Customer FireSci Pin 3"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_customer_firesci_pin_3"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
                     android:singleLine="true"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/continueButtonAddNewLocation"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Add Location"
-                android:textAllCaps="false"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/txt_continue"
                 android:textColor="@color/white"
-                android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8dp"
+                app:cornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
-
+                app:layout_constraintTop_toBottomOf="@id/linearLayout10" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarAddNewLocation"

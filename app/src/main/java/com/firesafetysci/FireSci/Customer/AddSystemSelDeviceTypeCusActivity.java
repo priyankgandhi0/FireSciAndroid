@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -28,13 +28,12 @@ import java.util.Objects;
 public class AddSystemSelDeviceTypeCusActivity extends AppCompatActivity implements DeviceTypeAdapter.OnDeviceTypeClickListener {
     public static Location location;
     public static String enteredSerialNumber;
-
+    DividerItemDecoration decoration;
+    private ImageButton btnBack;
     private RecyclerView deviceTypeRecyclerView;
     private Button continueButton;
-
     private String selectedDeviceType = "";
     private ArrayList<String> deviceTypeArrayList;
-    DividerItemDecoration decoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +42,6 @@ public class AddSystemSelDeviceTypeCusActivity extends AppCompatActivity impleme
 
         initViews();
         setOnClickListeners();
-
-        Toolbar addSystemDevTypeCustomerActivityToolbar = findViewById(R.id.addSystemDevTypeCustomerActivityToolbar);
-        addSystemDevTypeCustomerActivityToolbar.setTitle("");
-        setSupportActionBar(addSystemDevTypeCustomerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Set initially none selected
         deviceTypeArrayList = new ArrayList<>();
@@ -64,6 +57,7 @@ public class AddSystemSelDeviceTypeCusActivity extends AppCompatActivity impleme
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceTypeRecyclerView = findViewById(R.id.recyclerViewAddSysSelDevCustomer);
         continueButton = findViewById(R.id.continueButtonAddSysSelDevCus);
 
@@ -107,6 +101,8 @@ public class AddSystemSelDeviceTypeCusActivity extends AppCompatActivity impleme
                 AddNewSystemCustomerActivity.selectedDeviceType = selectedDeviceType;
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     @Override

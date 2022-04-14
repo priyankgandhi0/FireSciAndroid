@@ -113,77 +113,93 @@
         <entry key="app/src/main/res/drawable/chevron_right_icon.xml" value="0.15925925925925927" />
         <entry key="app/src/main/res/drawable/delete_icon.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/divider.xml" value="0.15925925925925927" />
+        <entry key="app/src/main/res/drawable/drawer_right_side_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edit_icon.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/fire_icon.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/drawable/help_icon.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/drawable/home_icon.xml" value="0.1638888888888889" />
+        <entry key="app/src/main/res/drawable/ic_description.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/linear_layout_border.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable/location_icon.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/drawable/logout_icon.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable/red_bar.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable/red_round_back.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/system_row_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/system_row_delete_bg.xml" value="0.1195" />
+        <entry key="app/src/main/res/drawable/system_row_detail_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/system_row_edit_bg.xml" value="0.1195" />
+        <entry key="app/src/main/res/drawable/system_row_red_bg.xml" value="0.1195" />
         <entry key="app/src/main/res/drawable/system_textview_back.xml" value="0.17592592592592593" />
+        <entry key="app/src/main/res/drawable/white_round_back.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/white_round_back_with_inset.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/activity_account_created.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_account_customer.xml" value="0.3882095336914063" />
-        <entry key="app/src/main/res/layout/activity_account_installer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account_created.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_account_customer.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_account_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_add_new_location.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/activity_add_new_location_installer.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_add_new_system.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_new_location_installer.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_add_new_system.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_add_new_system_chose_device.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/activity_add_new_system_customer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_new_system_customer.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_add_new_system_device_name_activty.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_add_new_system_installer.xml" value="0.2942708333333333" />
-        <entry key="app/src/main/res/layout/activity_add_system_sel_device_cus.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/activity_add_system_sel_device_ins.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_add_system_sel_device_cus.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_add_system_sel_device_ins.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_add_system_ser_no_customer.xml" value="0.2882904052734375" />
-        <entry key="app/src/main/res/layout/activity_add_system_ser_no_installer.xml" value="0.37484893798828123" />
+        <entry key="app/src/main/res/layout/activity_add_system_ser_no_installer.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.2942708333333333" />
-        <entry key="app/src/main/res/layout/activity_change_password_customer.xml" value="0.2942708333333333" />
-        <entry key="app/src/main/res/layout/activity_change_password_installer.xml" value="0.2735642555636267" />
-        <entry key="app/src/main/res/layout/activity_choose_country.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/activity_company_details.xml" value="0.14647530603630224" />
-        <entry key="app/src/main/res/layout/activity_create_password.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_didnt_get_email.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_edit_location_installer.xml" value="0.24256410256410257" />
+        <entry key="app/src/main/res/layout/activity_change_password_customer.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_change_password_installer.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_choose_country.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_company_details.xml" value="0.1483539974348012" />
+        <entry key="app/src/main/res/layout/activity_contact.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_create_password.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_didnt_get_email.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_edit_location_installer.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_edit_location_system.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/activity_edit_system.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_edit_system_customer.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_email_address.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_edit_system.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_edit_system_customer.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_email_address.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.1483539974348012" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_homepage_customer.xml" value="0.24635416666666668" />
-        <entry key="app/src/main/res/layout/activity_homepage_installer.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/activity_forgot_password_new_password.xml" value="0.1483539974348012" />
+        <entry key="app/src/main/res/layout/activity_forgot_password_verification_code.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/activity_homepage_customer.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_homepage_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_installer_or_customer.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/activity_locations_customer.xml" value="0.30512820512820515" />
+        <entry key="app/src/main/res/layout/activity_locations_customer.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_locations_installer.xml" value="0.3160493827160494" />
         <entry key="app/src/main/res/layout/activity_my_fire_sci_system.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_my_fire_sci_system_location.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_name.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_new_password.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/layout/activity_new_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_phone_number.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_register_or_sign_in.xml" value="0.12314814814814815" />
-        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.17794871794871794" />
+        <entry key="app/src/main/res/layout/activity_signin.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18072916666666666" />
-        <entry key="app/src/main/res/layout/activity_system_details.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_systems_customer.xml" value="0.33779732394401374" />
-        <entry key="app/src/main/res/layout/activity_systems_installer.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_system_details.xml" value="0.1483539974348012" />
+        <entry key="app/src/main/res/layout/activity_systems_customer.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_systems_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/activity_two_step_verification.xml" value="0.2942708333333333" />
+        <entry key="app/src/main/res/layout/add_system_dialog_layout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.29409085469363444" />
-        <entry key="app/src/main/res/layout/app_bar_main_customer.xml" value="0.30512820512820515" />
-        <entry key="app/src/main/res/layout/app_bar_main_installer.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/app_bar_main_customer.xml" value="0.12326227988878591" />
+        <entry key="app/src/main/res/layout/app_bar_main_installer.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.29936811259720486" />
-        <entry key="app/src/main/res/layout/content_main_customer.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/content_main_installer.xml" value="0.31969451904296875" />
-        <entry key="app/src/main/res/layout/device_type_layout.xml" value="0.2921875" />
+        <entry key="app/src/main/res/layout/content_main_customer.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/content_main_installer.xml" value="0.14647530603630224" />
+        <entry key="app/src/main/res/layout/device_type_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/device_type_row_layout.xml" value="0.2921875" />
         <entry key="app/src/main/res/layout/headernavdrawer.xml" value="0.2942708333333333" />
-        <entry key="app/src/main/res/layout/location_row_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/info_dialog_layout.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/location_row_layout.xml" value="0.14647530603630224" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/layout/nav_header_main_customer.xml" value="0.23229166666666667" />
-        <entry key="app/src/main/res/layout/system_row_layout.xml" value="0.10161411836621033" />
+        <entry key="app/src/main/res/layout/nav_header_main_installer.xml" value="0.1483539974348012" />
+        <entry key="app/src/main/res/layout/system_row_layout.xml" value="0.12326227988878591" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.2942708333333333" />
         <entry key="app/src/main/res/menu/main_menu_customer.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/menu/main_menu_installer.xml" value="0.30512820512820515" />

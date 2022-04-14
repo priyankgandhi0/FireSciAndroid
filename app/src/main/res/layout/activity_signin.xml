@@ -19,172 +19,190 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/logoImageView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/no_description"
-        app:layout_constraintDimensionRatio="2.8:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack"
-        app:layout_constraintWidth_percent="0.6"
-        app:srcCompat="@drawable/logo_transparent" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="60dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="5dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:paddingTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImageView"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/no_description"
+                app:layout_constraintDimensionRatio="2.8:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.6"
+                app:srcCompat="@drawable/logo_transparent" />
 
-                <TextView
-                    android:id="@+id/tvSignIn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/sign_in"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="50dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logoImageView"
+                app:layout_constraintVertical_bias="0">
 
-                <TextView
-                    android:id="@+id/tvSignInToContinue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/please_sign_in_to_continue"
-                    android:textColor="@color/light_grey2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvSignIn" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/emailTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/firesci_pin_or_e_mail"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
-                    app:layout_constraintTop_toBottomOf="@id/tvSignInToContinue" />
+                    <TextView
+                        android:id="@+id/tvSignIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/sign_in"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/emailEditTextSignIn"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/firesci_access_code_or_e_mail"
-                    android:imeActionLabel="Next"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="textEmailAddress"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/emailTextView" />
+                    <TextView
+                        android:id="@+id/tvSignInToContinue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/please_sign_in_to_continue"
+                        android:textColor="@color/light_grey2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSignIn" />
 
-                <TextView
-                    android:id="@+id/passwordTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/password"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
-                    app:layout_constraintTop_toBottomOf="@id/emailEditTextSignIn" />
+                    <TextView
+                        android:id="@+id/emailTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/firesci_pin_or_e_mail"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                        app:layout_constraintTop_toBottomOf="@id/tvSignInToContinue" />
 
-                <EditText
-                    android:id="@+id/passwordEditTextSignIn"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:drawableEnd="@drawable/ic_password_visibility"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_password"
-                    android:imeActionLabel="Done"
-                    android:imeOptions="actionDone"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColorHint="@color/hintColor"
-                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
-                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
-                    app:layout_constraintTop_toBottomOf="@id/passwordTextView" />
+                    <EditText
+                        android:id="@+id/emailEditTextSignIn"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/firesci_access_code_or_e_mail"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textEmailAddress"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/emailTextView" />
 
-                <CheckBox
-                    android:id="@+id/keepMeSignedInCheckBox"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="16dp"
-                    android:buttonTint="@color/colorPrimary"
-                    android:checked="true"
-                    android:fontFamily="@font/poppins"
-                    android:paddingStart="5dp"
-                    android:text="@string/keep_me_signed_in"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
-                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
-                    app:layout_constraintTop_toBottomOf="@id/passwordEditTextSignIn"
-                    tools:ignore="RtlSymmetry" />
+                    <TextView
+                        android:id="@+id/passwordTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/password"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                        app:layout_constraintTop_toBottomOf="@id/emailEditTextSignIn" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/signInButton"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/sign_in"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/colorPrimary"
-                    app:cornerRadius="50dp"
-                    app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
-                    app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
-                    app:layout_constraintTop_toBottomOf="@id/keepMeSignedInCheckBox" />
+                    <EditText
+                        android:id="@+id/passwordEditTextSignIn"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:drawableEnd="@drawable/ic_password_visibility"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_password"
+                        android:imeActionLabel="Done"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                        app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                        app:layout_constraintTop_toBottomOf="@id/passwordTextView" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/forgotPasswordTextView"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/forgot_password_question_mark"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/signInButton" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-    </com.google.android.material.card.MaterialCardView>
+                    <CheckBox
+                        android:id="@+id/keepMeSignedInCheckBox"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="true"
+                        android:fontFamily="@font/poppins"
+                        android:paddingStart="5dp"
+                        android:text="@string/keep_me_signed_in"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                        app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                        app:layout_constraintTop_toBottomOf="@id/passwordEditTextSignIn"
+                        tools:ignore="RtlSymmetry" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/signInButton"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/sign_in"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/colorPrimary"
+                        app:cornerRadius="50dp"
+                        app:layout_constraintEnd_toEndOf="@id/emailEditTextSignIn"
+                        app:layout_constraintStart_toStartOf="@id/emailEditTextSignIn"
+                        app:layout_constraintTop_toBottomOf="@id/keepMeSignedInCheckBox" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/forgotPasswordTextView"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/forgot_password_question_mark"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/signInButton" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarSignIn"
@@ -204,5 +222,4 @@
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/white" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

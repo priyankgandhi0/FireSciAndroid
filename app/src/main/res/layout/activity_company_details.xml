@@ -19,265 +19,280 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/logoImageView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/no_description"
-        app:layout_constraintDimensionRatio="2.8:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack"
-        app:layout_constraintWidth_percent="0.6"
-        app:srcCompat="@drawable/logo_transparent" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="60dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="5dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:paddingTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImageView"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/no_description"
+                app:layout_constraintDimensionRatio="2.8:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.6"
+                app:srcCompat="@drawable/logo_transparent" />
 
-                <TextView
-                    android:id="@+id/tvCreateAcc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/create_account"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="50dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logoImageView"
+                app:layout_constraintVertical_bias="0">
 
-                <TextView
-                    android:id="@+id/tvCompanyDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/company_details"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCreateAcc" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/companyNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/company_name"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/tvCompanyDetails" />
+                    <TextView
+                        android:id="@+id/tvCreateAcc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/create_account"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/companyNameEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_company_name"
-                    android:imeActionLabel="Next"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/companyNameTextView" />
+                    <TextView
+                        android:id="@+id/tvCompanyDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/company_details"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCreateAcc" />
 
-                <TextView
-                    android:id="@+id/cityTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/city"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/companyNameEditText" />
+                    <TextView
+                        android:id="@+id/companyNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/company_name"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/tvCompanyDetails" />
 
-                <EditText
-                    android:id="@+id/cityEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_your_city"
-                    android:imeActionLabel="Next"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/cityTextView"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/companyNameEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_company_name"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapWords"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/companyNameTextView" />
 
-                <TextView
-                    android:id="@+id/stateTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/state_province"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/cityEditText" />
+                    <TextView
+                        android:id="@+id/cityTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/city"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/companyNameEditText" />
 
-                <EditText
-                    android:id="@+id/stateEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_your_state_province"
-                    android:imeActionLabel="Next"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/stateTextView"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/cityEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_your_city"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapWords"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/cityTextView"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/addressTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/address"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/stateEditText" />
+                    <TextView
+                        android:id="@+id/stateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/state_province"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/cityEditText" />
 
-                <EditText
-                    android:id="@+id/addressEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_your_address"
-                    android:imeActionLabel="Next"
-                    android:imeOptions="actionNext"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/addressTextView"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/stateEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_your_state_province"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapWords"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/stateTextView"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/zipCodeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/zip_code"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/addressEditText" />
+                    <TextView
+                        android:id="@+id/addressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/address"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/stateEditText" />
 
-                <EditText
-                    android:id="@+id/zipCodeEditText"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edit_text_border"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/enter_your_zip_code"
-                    android:imeActionLabel="Done"
-                    android:imeOptions="actionDone"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:paddingHorizontal="20dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
-                    app:layout_constraintStart_toStartOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/zipCodeTextView"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <EditText
+                        android:id="@+id/addressEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_your_address"
+                        android:imeActionLabel="Next"
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapSentences"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/addressTextView"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/all_fields_required"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/all_fields_required"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
-                    app:layout_constraintTop_toBottomOf="@id/zipCodeEditText" />
+                    <TextView
+                        android:id="@+id/zipCodeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/zip_code"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/addressEditText" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/continueButton"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/txt_continue"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/colorPrimary"
-                    app:cornerRadius="50dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/all_fields_required" />
+                    <EditText
+                        android:id="@+id/zipCodeEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edit_text_border"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/enter_your_zip_code"
+                        android:imeActionLabel="Done"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:paddingHorizontal="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="@dimen/edit_text_text_size"
+                        app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
+                        app:layout_constraintStart_toStartOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/zipCodeTextView"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-    </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/all_fields_required"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/all_fields_required"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="@id/companyNameEditText"
+                        app:layout_constraintTop_toBottomOf="@id/zipCodeEditText" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/continueButton"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/txt_continue"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/colorPrimary"
+                        app:cornerRadius="50dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/all_fields_required" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarCompanyDetails"
@@ -297,5 +312,4 @@
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/white" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,71 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="7.5dp"
+    android:background="@drawable/white_round_back"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/companyNameLocationRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="start"
-        android:text="Chip Soul Technology"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/chevronRightImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Chip Soul Technology" />
 
     <TextView
         android:id="@+id/addressLocationRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Canal Road"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/chevronRightImageView"
+        app:layout_constraintEnd_toEndOf="@+id/companyNameLocationRow"
         app:layout_constraintStart_toStartOf="@+id/companyNameLocationRow"
-        app:layout_constraintTop_toBottomOf="@+id/companyNameLocationRow" />
+        app:layout_constraintTop_toBottomOf="@+id/companyNameLocationRow"
+        tools:text="Canal Road" />
 
     <TextView
         android:id="@+id/cityStateZipcodeTextViewRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Peshawar, Kpk 25000"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/chevronRightImageView"
+        app:layout_constraintEnd_toEndOf="@+id/companyNameLocationRow"
         app:layout_constraintStart_toStartOf="@+id/addressLocationRow"
-        app:layout_constraintTop_toBottomOf="@+id/addressLocationRow" />
+        app:layout_constraintTop_toBottomOf="@+id/addressLocationRow"
+        tools:text="Peshawar, Kpk 25000" />
 
     <TextView
         android:id="@+id/countryTextViewRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"
-        android:text="Pakistan"
+        android:fontFamily="@font/poppins"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chevronRightImageView"
+        app:layout_constraintEnd_toEndOf="@+id/companyNameLocationRow"
         app:layout_constraintStart_toStartOf="@+id/cityStateZipcodeTextViewRow"
-        app:layout_constraintTop_toBottomOf="@+id/cityStateZipcodeTextViewRow" />
+        app:layout_constraintTop_toBottomOf="@+id/cityStateZipcodeTextViewRow"
+        tools:text="Pakistan" />
 
     <ImageView
         android:id="@+id/chevronRightImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_right_arrow"
+        android:contentDescription="@string/no_description"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/chevron_right_icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

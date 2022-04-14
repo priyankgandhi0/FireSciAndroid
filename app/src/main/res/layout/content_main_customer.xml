@@ -2,20 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/flameBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.08"
-        android:background="#FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/flame_image" />
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBackground">
 
     <ScrollView
         android:layout_width="0dp"
@@ -29,55 +18,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <View
+                android:id="@+id/viewTopBar"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/logoImageView"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="24dp"
+                android:contentDescription="@string/no_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/firesci_transparent_logo" />
 
-            <ImageView
-                android:id="@+id/blueBar"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logoImageView"
-                app:srcCompat="@drawable/blue_bar" />
-
-            <ImageView
-                android:id="@+id/redBar"
-                android:layout_width="0dp"
-                android:layout_height="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/blueBar"
-                app:srcCompat="@drawable/red_bar" />
-
-            <TextView
-                android:id="@+id/welcomeTextViewCustomer"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/locationsRecyclerViewCustomer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Welcome,\n Hammad!"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="26sp"
+                android:layout_marginTop="12.5dp"
+                tools:listitem="@layout/location_row_layout"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/redBar" />
-
-            <LinearLayout
+                tools:itemCount="2"
+                app:layout_constraintTop_toBottomOf="@id/viewTopBar" />
+            <!--<LinearLayout
                 android:id="@+id/systemLocationsLinearLayoutCustomer"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
@@ -90,7 +61,7 @@
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcomeTextViewCustomer">
+                app:layout_constraintTop_toBottomOf="@id/viewTopBar">
 
                 <ImageView
                     android:id="@+id/systemLocationsImageView"
@@ -210,8 +181,40 @@
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
-            </LinearLayout>
+            </LinearLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/noLocationsFoundImageView"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@string/no_description"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/no_locations_found" />
+
+    <LinearLayout
+        android:id="@+id/progressBarLocationsCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/progress_bar_back"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/white" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

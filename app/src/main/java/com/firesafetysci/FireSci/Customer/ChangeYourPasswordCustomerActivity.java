@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText oldPasswordEditText, newPasswordEditText, confirmPasswordEditText;
     private Button changePasswordButton;
     private LinearLayout progressBar;
@@ -42,12 +42,6 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
         initViews();
         setOnClickListeners();
 
-        Toolbar changePasswordCustomerActivityToolbar = findViewById(R.id.changePasswordCustomerActivityToolbar);
-        changePasswordCustomerActivityToolbar.setTitle("");
-        setSupportActionBar(changePasswordCustomerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
     }
 
     @Override
@@ -57,6 +51,7 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         oldPasswordEditText = findViewById(R.id.oldPasswordEditTextCustomer);
         newPasswordEditText = findViewById(R.id.newPasswordEditTextCustomer);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditTextCustomer);
@@ -103,6 +98,8 @@ public class ChangeYourPasswordCustomerActivity extends AppCompatActivity {
                 changePasswordInDatabase(oldPassword, newPassword);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private boolean isPasswordValid(String password) {

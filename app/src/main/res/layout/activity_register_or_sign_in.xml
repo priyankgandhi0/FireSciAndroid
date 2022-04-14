@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@drawable/background"
     tools:context=".AccountRegistration.RegisterOrSignInActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -62,7 +62,10 @@
                     android:id="@+id/registerButton"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
                     android:fontFamily="@font/poppins_semibold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
                     android:text="@string/register"
                     android:textColor="@color/white"
                     app:backgroundTint="#BF0000"
@@ -76,6 +79,8 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:fontFamily="@font/poppins_semibold"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
                     android:text="@string/sign_in"
                     android:textColor="@color/white"
                     app:backgroundTint="@color/colorPrimary"

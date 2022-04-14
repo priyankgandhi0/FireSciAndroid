@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -27,10 +27,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 public class EditLocationInstallerActivity extends AppCompatActivity {
     public static Location locationToEdit;
+    private ImageButton btnBack;
     private EditText companyNameEditText, cityEditText, stateOrProvinceEditText, addressEditText,
             zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText, customerFireSciPin2EditText,
             customerFireSciPin3EditText;
@@ -46,12 +46,6 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
         initViews();
         setOnClickListeners();
 
-        Toolbar editLocationInsActivityToolbar = findViewById(R.id.editLocationInsActivityToolbar);
-        editLocationInsActivityToolbar.setTitle("");
-        setSupportActionBar(editLocationInsActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         setDefaultValuesInViews();
     }
 
@@ -62,6 +56,7 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         companyNameEditText = findViewById(R.id.companyNameEditTextEditLocationIns);
         cityEditText = findViewById(R.id.cityEditTextEditLocationIns);
         stateOrProvinceEditText = findViewById(R.id.stateEditTextEditLocationIns);
@@ -135,6 +130,8 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
                 addLocationInDatabase(companyName, city, state, address, zipCode, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {

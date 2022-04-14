@@ -1,21 +1,16 @@
 package com.firesafetysci.FireSci.Installer;
 
-import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
-
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -29,21 +24,15 @@ import com.google.android.material.snackbar.Snackbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class AddNewSystemInstallerActivity extends AppCompatActivity {
     public static Location location;
     public static String enteredSerialNumber;
     public static String selectedDeviceType;
 
+    private ImageButton btnBack;
     private Button addSystemButton;
     private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private LinearLayout progressBar;
@@ -55,12 +44,6 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar addNewSystemInstallerActivityToolbar = findViewById(R.id.addNewSystemInstallerActivityToolbar);
-        addNewSystemInstallerActivityToolbar.setTitle("");
-        setSupportActionBar(addNewSystemInstallerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 
@@ -71,6 +54,7 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceNameEditText = findViewById(R.id.deviceNameEditText);
         roomEditText = findViewById(R.id.roomEditText);
         buildingEditText = findViewById(R.id.buildingEditText);
@@ -88,7 +72,7 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
             String floor = floorEditText.getText().toString().trim();
             String description = descriptionEditText.getText().toString().trim();
 
-            if (deviceName.isEmpty() || description.isEmpty()) {
+            if (deviceName.isEmpty()) {
                 Snackbar.make(findViewById(R.id.addSystemButtonAddSysIns), "Please enter the required fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -108,6 +92,8 @@ public class AddNewSystemInstallerActivity extends AppCompatActivity {
                 addSystemInDatabase(enteredSerialNumber, selectedDeviceType, location.getId(), deviceName, room, building, floor, description);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void addSystemInDatabase(String enteredSerialNumber, String selectedDeviceType, int locationId, String deviceName, String room, String building, String floor, String description) {

@@ -1,27 +1,19 @@
 package com.firesafetysci.FireSci.Main;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firesafetysci.FireSci.Installer.AddNewLocationInstallerActivity;
-import com.firesafetysci.FireSci.R;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Objects;
+import com.firesafetysci.FireSci.R;
 
 public class SystemDetailsActivity extends AppCompatActivity {
-    private TextView serialNumberTextView, deviceNameTextView, roomTextView, buildingTextView, floorTextView, descriptionTextView;
-    private Button backButton;
-    private ImageView systemTypeImageView;
     public static System system;
+    private TextView serialNumberTextView, deviceNameTextView, roomTextView, buildingTextView, floorTextView, descriptionTextView;
+    private ImageButton backButton;
+    private ImageView systemTypeImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +22,6 @@ public class SystemDetailsActivity extends AppCompatActivity {
 
         initViews();
         setOnClickListeners();
-
-        Toolbar systemDetailsActivityToolbar = findViewById(R.id.systemDetailsActivityToolbar);
-        systemDetailsActivityToolbar.setTitle("");
-        setSupportActionBar(systemDetailsActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setValuesInViews();
     }
@@ -53,14 +39,12 @@ public class SystemDetailsActivity extends AppCompatActivity {
         buildingTextView = findViewById(R.id.buildingTextView);
         floorTextView = findViewById(R.id.floorTextView);
         descriptionTextView = findViewById(R.id.descriptionTextView);
-        backButton = findViewById(R.id.backButton);
+        backButton = findViewById(R.id.btnBack);
         systemTypeImageView = findViewById(R.id.systemTypeImageView);
     }
 
     private void setOnClickListeners() {
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
     }
 
     private void setValuesInViews() {

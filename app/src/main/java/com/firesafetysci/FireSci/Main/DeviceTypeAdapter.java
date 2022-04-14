@@ -5,44 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chauthai.swipereveallayout.SwipeRevealLayout;
-import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.firesafetysci.FireSci.R;
 
 import java.util.List;
 
 public class DeviceTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static List<String> dataSet;
-    Context context;
     private final String selectedDeviceType;
     private final OnDeviceTypeClickListener onClickListener;
-
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final ImageView deviceTypeImageView;
-        private final ConstraintLayout constraintLayout;
-        OnDeviceTypeClickListener clickListener;
-
-        public ViewHolder(View itemView, OnDeviceTypeClickListener clickListener) {
-            super(itemView);
-            this.deviceTypeImageView = itemView.findViewById(R.id.deviceTypeImageView);
-            this.constraintLayout = itemView.findViewById(R.id.deviceTypeConstraintLayout);
-            this.clickListener = clickListener;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            clickListener.onItemClick(getAdapterPosition());
-        }
-    }
+    Context context;
 
     public DeviceTypeAdapter(List<String> data, String selectedDeviceType, Context context, OnDeviceTypeClickListener onClickListener) {
         dataSet = data;
@@ -67,15 +45,16 @@ public class DeviceTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case "dar":
                 ((ViewHolder) holder).deviceTypeImageView.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.direct_fire_suppression));
                 if (selectedDeviceType.equals("dar")) {
-                    ((ViewHolder) holder).constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
-
+                    ((ViewHolder) holder).chevronRightImageView.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_checked));
+                    ((ViewHolder) holder).viewBg.setBackground(ContextCompat.getDrawable(context, R.drawable.system_row_bg));
                 }
                 break;
 
             case "indi":
                 ((ViewHolder) holder).deviceTypeImageView.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.indirect_fire_suppression));
                 if (selectedDeviceType.equals("indi")) {
-                    ((ViewHolder) holder).constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.light_grey));
+                    ((ViewHolder) holder).chevronRightImageView.setBackground(ContextCompat.getDrawable(context, R.drawable.ic_checked));
+                    ((ViewHolder) holder).viewBg.setBackground(ContextCompat.getDrawable(context, R.drawable.system_row_bg));
                 }
                 break;
         }
@@ -88,5 +67,28 @@ public class DeviceTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public interface OnDeviceTypeClickListener {
         void onItemClick(int position);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final ImageView deviceTypeImageView;
+        private final ImageView chevronRightImageView;
+        private final ConstraintLayout constraintLayout;
+        private final View viewBg;
+        OnDeviceTypeClickListener clickListener;
+
+        public ViewHolder(View itemView, OnDeviceTypeClickListener clickListener) {
+            super(itemView);
+            this.deviceTypeImageView = itemView.findViewById(R.id.deviceTypeImageView);
+            this.constraintLayout = itemView.findViewById(R.id.deviceTypeConstraintLayout);
+            this.chevronRightImageView = itemView.findViewById(R.id.chevronRightImageView);
+            this.viewBg = itemView.findViewById(R.id.viewBg);
+            this.clickListener = clickListener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            clickListener.onItemClick(getAdapterPosition());
+        }
     }
 }

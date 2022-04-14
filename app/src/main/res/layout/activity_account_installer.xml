@@ -4,46 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".Installer.AccountActivityInstaller">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <View
+        android:id="@+id/viewTopBar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_height="@dimen/view_top_bar_height"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/accountDetailsActivityToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="">
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Account Details"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/account_details"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
 
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@id/viewTopBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -51,25 +57,27 @@
 
             <TextView
                 android:id="@+id/accountDetailsTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/light_grey"
-                android:gravity="center|start"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="Personal Details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/personal_details"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/pinLinearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_text_background"
                 android:orientation="vertical"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,33 +87,27 @@
                     android:id="@+id/pinTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FireSci Pin"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/firesci_pin"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/pinTextViewInstaller"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins"
                     android:singleLine="true"
-                    android:text="001AA"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:text="001AA" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -116,37 +118,35 @@
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First Name"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/first_name"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/nameEditTextAccountInstaller"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter First Name"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_first_name"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -157,37 +157,35 @@
                     android:id="@+id/lastNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Name"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/last_name"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/lastNameEditTextAccountInstaller"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Last Name"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_last_name"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -198,31 +196,26 @@
                     android:id="@+id/companyNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Company Name"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/company_name"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/companyNameEditTextAccountInstaller"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Company Name"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/enter_company_name"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/company_Edit_text"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,9 +223,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -243,45 +235,37 @@
                     android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="E-Mail"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/state_edit_text"
-                    app:layout_constraintTop_toBottomOf="@+id/city_Edit_text" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/email"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/emailEditTextAccountInstaller"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center|start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your E-Mail"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_your_email"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/city_Edit_text"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -289,122 +273,105 @@
                     android:id="@+id/phoneNumberTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/address_edit_text"
-                    app:layout_constraintTop_toBottomOf="@+id/state_edit_text" />
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/phoneNumberEditTextAccountInstaller"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="start"
+                    android:layout_height="50dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/edit_text_border"
-                    android:hint="Enter Your Phone Number"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/enter_your_phone_number"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:importantForAutofill="no"
+                    android:inputType="number|phone"
+                    android:paddingHorizontal="20dp"
                     android:singleLine="true"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/hintColor"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/state_edit_text"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:textSize="@dimen/edit_text_text_size" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/all_fields_required"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="*All Fields Required"
-                android:textColor="@color/black"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/all_fields_required"
+                android:textColor="@color/black"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout5" />
 
             <TextView
                 android:id="@+id/accountSecurityTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="24dp"
-                android:background="@color/light_grey"
-                android:gravity="center|start"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="Account Security"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/account_security"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/all_fields_required" />
 
             <TextView
                 android:id="@+id/changeYourPasswordTextViewAccountInstaller"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:text="Change your Password"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="15dp"
+                android:text="@string/change_password"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/accountSecurityTextView" />
 
             <TextView
                 android:id="@+id/logoutTextViewAccountInstaller"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:text="Log Out"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="15dp"
+                android:text="@string/nav_logout"
+                android:textColor="#BF0000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/changeYourPasswordTextViewAccountInstaller"
-                tools:ignore="TouchTargetSizeCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/changeYourPasswordTextViewAccountInstaller" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveChangesButtonAccountInstaller"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Save Changes"
-                android:textAllCaps="false"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/save_changes"
                 android:textColor="@color/white"
-                android:textSize="18sp"
                 app:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="8dp"
+                app:cornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logoutTextViewAccountInstaller"
-                app:layout_constraintVertical_bias="0.0" />
-
+                app:layout_constraintTop_toBottomOf="@id/logoutTextViewAccountInstaller" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/progressBarAccountDetails"

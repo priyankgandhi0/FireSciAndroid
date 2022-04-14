@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class ChangeYourPasswordInstallerActivity extends AppCompatActivity {
+    private ImageButton btnBack;
     private EditText oldPasswordEditText, newPasswordEditText, confirmPasswordEditText;
     private Button changePasswordButton;
     private LinearLayout progressBar;
@@ -42,12 +44,6 @@ public class ChangeYourPasswordInstallerActivity extends AppCompatActivity {
         initViews();
         setOnClickListeners();
 
-        Toolbar changePasswordActivityToolbar = findViewById(R.id.changePasswordActivityToolbar);
-        changePasswordActivityToolbar.setTitle("");
-        setSupportActionBar(changePasswordActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
     }
 
     @Override
@@ -57,6 +53,7 @@ public class ChangeYourPasswordInstallerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         oldPasswordEditText = findViewById(R.id.oldPasswordEditText);
         newPasswordEditText = findViewById(R.id.newPasswordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
@@ -103,6 +100,8 @@ public class ChangeYourPasswordInstallerActivity extends AppCompatActivity {
                 changePasswordInDatabase(oldPassword, newPassword);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private boolean isPasswordValid(String password) {

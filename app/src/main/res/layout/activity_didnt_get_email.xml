@@ -10,14 +10,11 @@
     <View
         android:id="@+id/viewTopBar"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/view_top_bar_height"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.11"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btnBack"
@@ -47,6 +44,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,6 +131,8 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="50dp"
                 android:fontFamily="@font/poppins_semibold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="@string/resend_email"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/colorPrimary"
@@ -144,13 +145,12 @@
                 android:id="@+id/useAnotherEmailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center"
                 android:text="@string/use_another_e_mail"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/resendEmailButton" />

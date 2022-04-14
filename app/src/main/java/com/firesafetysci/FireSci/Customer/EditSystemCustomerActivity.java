@@ -1,21 +1,17 @@
 package com.firesafetysci.FireSci.Customer;
 
-import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
-
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,18 +32,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class EditSystemCustomerActivity extends AppCompatActivity implements DeviceTypeAdapter.OnDeviceTypeClickListener {
     public static System systemToEdit;
-
+    private ImageButton btnBack;
     private EditText deviceNameEditText, roomEditText, buildingEditText, floorEditText, descriptionEditText;
     private RecyclerView deviceTypeRecyclerView;
     private Button saveChangesButton;
-
     private String selectedDeviceType = "";
     private ArrayList<String> deviceTypeArrayList;
-    DividerItemDecoration decoration;
     private LinearLayout progressBar;
 
     @Override
@@ -57,12 +50,6 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
 
         initViews();
         setOnClickListeners();
-
-        Toolbar editSystemCustomerActivityToolbar = findViewById(R.id.editSystemCustomerActivityToolbar);
-        editSystemCustomerActivityToolbar.setTitle("");
-        setSupportActionBar(editSystemCustomerActivityToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         setDefaultValues();
 
@@ -79,6 +66,7 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
     }
 
     private void initViews() {
+        btnBack = findViewById(R.id.btnBack);
         deviceNameEditText = findViewById(R.id.deviceNameEditTextEditCus);
         roomEditText = findViewById(R.id.roomEditTextEditCus);
         buildingEditText = findViewById(R.id.buildingEditTextEditCus);
@@ -88,9 +76,6 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
         deviceTypeRecyclerView = findViewById(R.id.recyclerViewEditSystemCustomer);
         saveChangesButton = findViewById(R.id.saveChangesButtonEditSystemCustomer);
         progressBar = findViewById(R.id.progressBarEditSystemCustomer);
-
-        decoration = new DividerItemDecoration(getApplicationContext(), VERTICAL);
-        decoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider)));
     }
 
     private void setDefaultValues() {
@@ -110,7 +95,6 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
         deviceTypeRecyclerView.setLayoutManager(linearLayoutManager);
         deviceTypeRecyclerView.setItemAnimator(new DefaultItemAnimator());
         deviceTypeRecyclerView.setAdapter(adapter);
-        deviceTypeRecyclerView.addItemDecoration(decoration);
     }
 
     private void setOnClickListeners() {
@@ -141,6 +125,8 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
                 editSystemInDatabase(systemToEdit.getSystemSerialNumber(), selectedDeviceType, deviceName, room, building, floor, description);
             }
         });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void editSystemInDatabase(String systemSerialNumber, String selectedDeviceType, String deviceName, String room, String building, String floor, String description) {
@@ -216,7 +202,6 @@ public class EditSystemCustomerActivity extends AppCompatActivity implements Dev
         //Clear Recycler view
         deviceTypeArrayList.clear();
         deviceTypeRecyclerView.setAdapter(new DeviceTypeAdapter(deviceTypeArrayList, "", this, null));
-        deviceTypeRecyclerView.removeItemDecoration(decoration);
 
         deviceTypeArrayList.add("dar");
         deviceTypeArrayList.add("indi");

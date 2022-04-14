@@ -1,8 +1,5 @@
 package com.firesafetysci.FireSci.Installer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +8,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.firesafetysci.FireSci.Main.CommonFunctions;
 import com.firesafetysci.FireSci.Main.Location;
-import com.firesafetysci.FireSci.R;
 import com.firesafetysci.FireSci.Main.RequestHandler;
+import com.firesafetysci.FireSci.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.hbb20.CountryCodePicker;
 
@@ -30,14 +30,13 @@ import java.util.Map;
 import java.util.Objects;
 
 public class EditLocationInstallerActivity extends AppCompatActivity {
+    public static Location locationToEdit;
     private EditText companyNameEditText, cityEditText, stateOrProvinceEditText, addressEditText,
             zipcodeEditText, locationDescriptionEditText, customerFireSciPinEditText, customerFireSciPin2EditText,
             customerFireSciPin3EditText;
     private Button saveChangesButton;
     private LinearLayout progressBar;
     private CountryCodePicker countryPicker;
-
-    public static Location locationToEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +83,7 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             stateOrProvinceEditText.setText(locationToEdit.getStateProvince());
             addressEditText.setText(locationToEdit.getAddress());
             zipcodeEditText.setText(locationToEdit.getZipcode());
-            locationDescriptionEditText.setText(locationToEdit.getLocationDescription());
+//            locationDescriptionEditText.setText(locationToEdit.getLocationDescription());
             customerFireSciPinEditText.setText(locationToEdit.getCustomerFiresciPin());
             customerFireSciPin2EditText.setText(locationToEdit.getCustomerFiresciPin2());
             customerFireSciPin3EditText.setText(locationToEdit.getCustomerFiresciPin3());
@@ -110,13 +109,13 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             String state = stateOrProvinceEditText.getText().toString().trim();
             String address = addressEditText.getText().toString().trim();
             String zipCode = zipcodeEditText.getText().toString().trim();
-            String locationDescription = locationDescriptionEditText.getText().toString().trim();
+//            String locationDescription = locationDescriptionEditText.getText().toString().trim();
             String customerFireSciPin = customerFireSciPinEditText.getText().toString().trim();
             String customerFireSciPin2 = customerFireSciPin2EditText.getText().toString().trim();
             String customerFireSciPin3 = customerFireSciPin3EditText.getText().toString().trim();
 
             if (companyName.isEmpty() || city.isEmpty() || state.isEmpty() || address.isEmpty() ||
-                    zipCode.isEmpty() || locationDescription.isEmpty()) {
+                    zipCode.isEmpty()) {
                 Snackbar.make(findViewById(R.id.saveChangesButtonEditLocationInstaller), "Please enter the fields and try again!", 1250)
                         .setAction("Action", null)
                         .setActionTextColor(Color.WHITE)
@@ -133,15 +132,14 @@ public class EditLocationInstallerActivity extends AppCompatActivity {
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 customerFireSciPinEditText.clearFocus();
-                addLocationInDatabase(companyName, city, state, address, zipCode, locationDescription, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
+                addLocationInDatabase(companyName, city, state, address, zipCode, customerFireSciPin, customerFireSciPin2, customerFireSciPin3);
             }
         });
     }
 
-    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String locationDescription, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {
+    private void addLocationInDatabase(String companyName, String city, String state, String address, String zipCode, String customerFireSciPin, String customerFireSciPin2, String customerFireSciPin3) {
         String URL = "http://firesafetysci.com/android_app/api/edit_location.php?location_id=" + locationToEdit.getId() + "&customer_firesci_pin=" + customerFireSciPin + "&customer_firesci_pin_2=" + customerFireSciPin2 + "&customer_firesci_pin_3=" + customerFireSciPin3 +
-                "&company_name=" + companyName + "&city=" + city + "&state_province=" + state + "&country=" + countryPicker.getSelectedCountryName() + "&address=" + address + "&zipcode=" + zipCode + "&location_description="
-                + locationDescription;
+                "&company_name=" + companyName + "&city=" + city + "&state_province=" + state + "&country=" + countryPicker.getSelectedCountryName() + "&address=" + address + "&zipcode=" + zipCode;
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET, URL,
